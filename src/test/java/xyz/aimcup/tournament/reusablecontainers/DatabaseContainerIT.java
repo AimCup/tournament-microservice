@@ -11,7 +11,6 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
 public abstract class DatabaseContainerIT {
 
     private static final String POSTGRES_VERSION = "postgres:latest";
