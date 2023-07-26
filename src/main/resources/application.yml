@@ -1,11 +1,1 @@
-spring:
-  application:
-    name: TOURNAMENT-SERVICE
-eureka:
-  client:
-    service-url:
-        defaultZone: http://172.22.0.1:8761/eureka
-server:
-  servlet:
-    context-path: /api/tournament
-  port: 8080
+spring.profiles.active: @spring.profiles.active@
