@@ -1,35 +1,36 @@
 package xyz.aimcup.tournament.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.aimcup.generated.ExamplesApi;
+import xyz.aimcup.generated.model.ExampleDataRequest;
+import xyz.aimcup.generated.model.ExampleDataResponse;
 import xyz.aimcup.tournament.data.entity.Example;
 import xyz.aimcup.tournament.data.repository.ExampleRepostiory;
-import xyz.aimcup.tournament.model.request.ExampleDataRequest;
+import xyz.aimcup.tournament.mapper.example.ExampleMapper;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class ExampleController {
+public class ExampleController implements ExamplesApi {
 
     private final ExampleRepostiory exampleRepostiory;
+    private final ExampleMapper exampleMapper;
 
-    @GetMapping("/examples")
-    public List<Example> getExamples() {
-        return exampleRepostiory.findAll();
-    }
-
-    @PostMapping("/examples")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String addNewExample(@RequestBody ExampleDataRequest exampleDataRequest) {
+    @Override
+    public ResponseEntity<String> addNewExamples(ExampleDataRequest exampleDataRequest) {
         exampleRepostiory.save(Example.builder()
                 .data(exampleDataRequest.getData())
                 .build());
-        return "Example added";
+        return ResponseEntity.ok("Example added");
+    }
+
+    @Override
+    public ResponseEntity<List<ExampleDataResponse>> getExamples() {
+        List<Example> examples = exampleRepostiory.findAll();
+        List<ExampleDataResponse> exampleDataResponses = exampleMapper.examplesToExampleResponses(examples);
+        return ResponseEntity.ok(exampleDataResponses);
     }
 }
