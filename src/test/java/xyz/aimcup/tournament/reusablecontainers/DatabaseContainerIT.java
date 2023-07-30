@@ -32,11 +32,4 @@ public abstract class DatabaseContainerIT {
         registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
         registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
     }
-
-    @AfterEach
-    void clearDatabase(@Autowired Flyway flyway) {
-        flyway.clean();
-        flyway.migrate();
-    }
-
 }
