@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import xyz.aimcup.tournament.data.entity.Example;
-import xyz.aimcup.tournament.model.request.ExampleDataRequest;
+import xyz.aimcup.generated.model.ExampleDataRequest;
+import xyz.aimcup.generated.model.ExampleDataResponse;
 import xyz.aimcup.tournament.reusablecontainers.DatabaseContainerIT;
 
 import java.util.List;
@@ -21,11 +21,11 @@ class ExampleControllerIT extends DatabaseContainerIT {
     @Test
     void shouldAddExampleToDatabase() {
         // given
-        ExampleDataRequest exampleDataRequest = ExampleDataRequest.builder()
-                .data("example data")
-                .build();
+        ExampleDataRequest exampleDataRequest = new ExampleDataRequest();
+        exampleDataRequest.setData("example data");
+
         // when
-        String response = exampleController.addNewExample(exampleDataRequest);
+        String response = exampleController.addNewExamples(exampleDataRequest).getBody();
 
         // then
         assertThat(response).isEqualTo("Example added");
@@ -34,13 +34,13 @@ class ExampleControllerIT extends DatabaseContainerIT {
     @Test
     void shouldFindOnlyOneExampleInDatabase() {
         // given
-        ExampleDataRequest exampleDataRequest = ExampleDataRequest.builder()
-                .data("example data 2")
-                .build();
+        ExampleDataRequest exampleDataRequest = new ExampleDataRequest();
+        exampleDataRequest.setData("example data 2");
+
         // when
-        exampleController.addNewExample(exampleDataRequest);
-        exampleController.addNewExample(exampleDataRequest);
-        List<Example> exampleList = exampleController.getExamples();
+        exampleController.addNewExamples(exampleDataRequest).getBody();
+        exampleController.addNewExamples(exampleDataRequest).getBody();
+        List<ExampleDataResponse> exampleList = exampleController.getExamples().getBody();
 
         // then
         assertThat(exampleList).hasSizeGreaterThan(1);
