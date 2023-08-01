@@ -16,7 +16,6 @@ get:
 post:
   tags:
     - Example
-    - Add
   summary: Add example object
   operationId: add-new-examples
   requestBody:
