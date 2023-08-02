@@ -1,0 +1,15 @@
+name: Deploy to Production
+
+on:
+  workflow_dispatch:
+    branches: [ "master" ]
+
+jobs:
+  build-and-deploy:
+    runs-on:
+      group: Default
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build and deploy the Docker image
+      run: |
+        docker-compose -f docker/prd/prd-build-deploy-job.yml up -d --build

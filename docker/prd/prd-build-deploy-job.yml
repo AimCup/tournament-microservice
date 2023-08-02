@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  tournament-microservice:
+    build:
+      context: ../..
+      dockerfile: prd-build-deploy.Dockerfile
+    ports:
+      - "8101:8101"
+
+networks:
+  default:
+    external: true
+    name: aimcup-network

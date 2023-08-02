@@ -1,0 +1,27 @@
+name: Deploy to Staging
+
+on:
+  workflow_dispatch:
+    inputs:
+      run:
+        description: 'Build the Docker image'
+        required: true
+        default: 'true'
+#  pull_request:
+#    types:
+#      - closed
+#    branches:
+#      - stage
+
+jobs:
+  build:
+    runs-on:
+      group: Default
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and deploy the Docker image
+        run: |
+          docker-compose -f docker/stg/stg-build-deploy-job.yml up -d --build
+      - name: Run postgres db (if needed)
+        run: |
+          docker-compose -f docker/stg/stg-run-database-job.yml up -d --build
