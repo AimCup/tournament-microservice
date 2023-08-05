@@ -5,5 +5,5 @@ RUN mvn -f /acservice/pom.xml clean verify
 
 FROM arm32v7/eclipse-temurin:17
 COPY --from=build /acservice/target/*.jar app.jar
-EXPOSE 8080
+EXPOSE 8201
 ENTRYPOINT ["java","-jar","/app.jar"]

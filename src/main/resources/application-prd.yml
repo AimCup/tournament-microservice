@@ -5,7 +5,7 @@ eureka:
 server:
   servlet:
     context-path: /tournament
-  port: 0
+  port: 8201
 spring:
   application:
     name: tournament-microservice
