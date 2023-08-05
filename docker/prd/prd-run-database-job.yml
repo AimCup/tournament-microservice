@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  db-tournament-microservice:
+    image: postgres:15.1
+    restart: always
+    environment:
+      POSTGRES_USER: tournament
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: tournament
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5401:5432"
+
+networks:
+  default:
+    external: true
+    name: aimcup-network

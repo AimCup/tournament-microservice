@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  tournament-microservice:
+    build:
+      context: ../..
+      dockerfile: docker/stg/stg-build-deploy.Dockerfile
+    ports:
+      - "8201:8201"
+    environment:
+      - TOURNAMENT_DB_STG_PASSWORD=${POSTGRES_PASSWORD}
+
+
+networks:
+  default:
+    external: true
+    name: aimcup-network

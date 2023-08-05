@@ -1,7 +1,7 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://172.22.0.1:8761/eureka
+      defaultZone: http://172.18.0.1:8762/eureka
 server:
   servlet:
     context-path: /tournament
@@ -10,9 +10,9 @@ spring:
   application:
     name: tournament-microservice
   datasource:
-    url: jdbc:postgresql://localhost:5455/dbName
-    username: testUser
-    password: testPassword
+    url: jdbc:postgresql://172.18.0.1:5501/tournament
+    username: tournament
+    password: ${TOURNAMENT_DB_STG_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 10000
