@@ -24,7 +24,7 @@ public class ExampleController implements ExamplesApi {
         exampleRepostiory.save(Example.builder()
                 .data(exampleDataRequest.getData())
                 .build());
-        return ResponseEntity.ok("Example added ");
+        return ResponseEntity.ok("Example added");
     }
 
     @Override
