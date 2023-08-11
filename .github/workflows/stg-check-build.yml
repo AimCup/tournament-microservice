@@ -18,3 +18,26 @@ jobs:
           distribution: 'temurin'
       - name: Maven Verify
         run: mvn --batch-mode --update-snapshots verify
+      - name: Upload coverage
+          uses: actions/upload-artifact@v2
+          with:
+            name: test-case reports
+            path: aimcup/build/github
+  codacy-coverage-reporter:
+    runs-on: ubuntu-latest
+    name: codacy-coverage-reporter
+    needs: [ build ]
+    steps:
+      - name: download reports
+        uses: actions/download-artifact@v2
+        with:
+          name: test-case reports
+          path: aimcup/build/github
+      - name: Display structure of downloaded files
+        run: ls -R
+      - uses: actions/checkout@v2
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_API_TOKEN }}
+          coverage-reports: 'aimcup/build/github/coverage.xml'
