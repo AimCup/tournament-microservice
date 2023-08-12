@@ -137,7 +137,9 @@
                 <version>0.8.10</version>
                 <configuration>
                     <excludes>
-                        <exclude>xyz/aimcup/*/data/*</exclude>
+                        <exclude>xyz/aimcup/generated/**/*</exclude>
+                        <exclude>xyz/aimcup/*/data/**/*</exclude>
+                        <exclude>xyz/aimcup/*/mapper/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
