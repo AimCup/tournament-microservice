@@ -11,5 +11,5 @@ tags:
     description: Sample-OpenApi
 
 paths:
-  /examples:
-    $ref: './paths/example/example.yaml'
+  /tournament:
+    $ref: './paths/tournament/tournament-create-request.yaml'

@@ -1,13 +1,11 @@
 package xyz.aimcup.tournament.mapper.example;
 
 import org.mapstruct.Mapper;
-import xyz.aimcup.generated.model.ExampleDataResponse;
-import xyz.aimcup.tournament.data.entity.Example;
-
-import java.util.List;
+import xyz.aimcup.generated.model.TournamentCreateRequest;
+import xyz.aimcup.tournament.data.entity.tournament.PlayerBasedTournament;
 
 @Mapper(componentModel = "spring")
 public interface ExampleMapper {
-    ExampleDataResponse exampleToExampleResponse(Example example);
-    List<ExampleDataResponse> examplesToExampleResponses(List<Example> examples);
+    PlayerBasedTournament tournamentCreateRequestToPlayerBasedTournament(
+        TournamentCreateRequest tournamentCreateRequest);
 }
