@@ -179,6 +179,7 @@
                             <modelPackage>xyz.aimcup.generated.model</modelPackage>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
+                                <useTags>true</useTags>
                                 <additionalModelTypeAnnotations>@lombok.NoArgsConstructor @lombok.Builder @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
                                 <skipDefaultInterface>true</skipDefaultInterface>
                                 <interfaceOnly>true</interfaceOnly>

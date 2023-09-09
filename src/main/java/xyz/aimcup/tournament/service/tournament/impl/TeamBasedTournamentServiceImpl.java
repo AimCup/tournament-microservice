@@ -8,11 +8,11 @@ import xyz.aimcup.tournament.data.entity.tournament.TeamBasedTournament;
 import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 import xyz.aimcup.tournament.data.entity.tournament.TournamentType;
 import xyz.aimcup.tournament.data.repository.tournament.TournamentRepository;
-import xyz.aimcup.tournament.service.tournament.ITeamBasedTournamentService;
+import xyz.aimcup.tournament.service.tournament.TeamBasedTournamentService;
 
 @Service
 @RequiredArgsConstructor
-public class TeamBasedTournamentServiceImpl implements ITeamBasedTournamentService {
+public class TeamBasedTournamentServiceImpl implements TeamBasedTournamentService {
     private final TournamentRepository tournamentRepository;
 
     @Override

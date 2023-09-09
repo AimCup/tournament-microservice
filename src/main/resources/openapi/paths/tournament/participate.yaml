@@ -1,0 +1,22 @@
+post:
+  tags:
+    - Tournament
+  summary: Creates participation in tournament
+  operationId: participate
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+            format: uuid
+            description: Tournament UUID
