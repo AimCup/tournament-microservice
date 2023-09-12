@@ -4,12 +4,12 @@ eureka:
 server:
   servlet:
     context-path: /tournament
-  port: 0
+  port: 8080
 spring:
   application:
     name: tournament-microservice
   datasource:
-    url: jdbc:postgresql://localhost:5455/dbName
+    url: jdbc:postgresql://localhost:5432/tournament
     username: testUser
     password: testPassword
     driver-class-name: org.postgresql.Driver

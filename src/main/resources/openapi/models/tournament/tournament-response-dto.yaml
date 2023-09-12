@@ -1,0 +1,18 @@
+TournamentResponseDto:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+    abbreviation:
+      type: string
+    createdBy:
+      type: string
+      format: uuid
+
+TournamentsResponseDto:
+  type: array
+  items:
+    $ref: '#/TournamentResponseDto'

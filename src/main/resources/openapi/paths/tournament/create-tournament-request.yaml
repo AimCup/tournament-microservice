@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Tournament
+  summary: Creates a new tournament
+  operationId: create-tournament
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/tournament/tournament-create-request.yaml#/TournamentCreateRequest'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+            format: uuid
+            description: Tournament UUID

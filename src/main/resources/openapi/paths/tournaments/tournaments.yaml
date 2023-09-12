@@ -1,0 +1,13 @@
+get:
+  tags:
+    - Tournament
+  summary: Return tournaments
+  operationId: get-tournaments
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../../models/tournament/tournament-response-dto.yaml#/TournamentsResponseDto'
+
