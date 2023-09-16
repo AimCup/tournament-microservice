@@ -1,4 +1,4 @@
-TournamentType:
+TournamentTypeDto:
   type: string
   enum:
     - PLAYER_VS

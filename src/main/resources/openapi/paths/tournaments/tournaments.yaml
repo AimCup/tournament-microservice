@@ -1,6 +1,6 @@
 get:
   tags:
-    - Tournament
+    - Tournaments
   summary: Return tournaments
   operationId: get-tournaments
   responses:
@@ -9,5 +9,23 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../models/tournament/tournament-response-dto.yaml#/TournamentsResponseDto'
-
+            $ref: '../../models/tournament/TournamentResponseDto.yaml#/TournamentResponseDtoList'
+post:
+  tags:
+    - Tournaments
+  summary: Creates a new tournament
+  operationId: create-tournament
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/tournament/CreateTournamentRequest.yaml#/CreateTournamentRequest'
+  responses:
+    '201':
+      description: CREATED
+      content:
+        application/json:
+          schema:
+            type: string
+            format: uuid
+            description: Tournament UUID
