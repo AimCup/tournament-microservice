@@ -1,8 +1,8 @@
 get:
   tags:
-    - Tournament
+    - Tournaments
   summary: Returns tournament by id
-  operationId: get-tournament-by-id
+  operationId: get-tournament
   parameters:
     - name: tournamentId
       in: path
@@ -17,4 +17,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../models/tournament/tournament-response-dto.yaml#/TournamentResponseDto'
+            $ref: '../../models/tournament/TournamentResponseDto.yaml#/TournamentResponseDto'

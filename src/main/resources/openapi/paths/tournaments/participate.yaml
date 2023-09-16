@@ -1,6 +1,6 @@
 post:
   tags:
-    - Tournament
+    - Tournaments
   summary: Creates participation in tournament
   operationId: participate
   parameters:
@@ -12,8 +12,8 @@ post:
         format: uuid
         description: Tournament UUID
   responses:
-    '200':
-      description: OK
+    '201':
+      description: CREATED
       content:
         application/json:
           schema:
