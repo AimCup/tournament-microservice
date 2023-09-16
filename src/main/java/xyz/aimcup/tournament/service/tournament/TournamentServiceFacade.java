@@ -40,30 +40,6 @@ public final class TournamentServiceFacade implements TournamentBaseService,
     }
 
     @Override
-    public SpecificTournamentService getTournamentService(UUID tournamentId) {
-        Tournament tournament = tournamentRepository.findById(tournamentId)
-            .orElseThrow(() -> new NotReadablePropertyException(
-                SpecificTournamentService.class,
-                "tournamentId",
-                "Tournament with id " + tournamentId + " not found"));
-        return getTournamentService(tournament);
-    }
-
-    @Override
-    public SpecificTournamentService getTournamentService(Tournament tournament) {
-        String tournamentTypeValue = tournament.getClass().getAnnotation(DiscriminatorValue.class)
-            .value();
-        if (tournamentTypeValue == null) {
-            throw new NotReadablePropertyException(
-                SpecificTournamentService.class,
-                "tournamentTypeValue",
-                "Tournament type is null");
-        }
-        TournamentType tournamentType = TournamentType.valueOf(tournamentTypeValue);
-        return getTournamentService(tournamentType);
-    }
-
-    @Override
     public SpecificTournamentService getTournamentService(TournamentType tournamentType) {
         if (tournamentType == null) {
             throw new NotReadablePropertyException(
