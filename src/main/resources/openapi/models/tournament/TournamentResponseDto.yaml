@@ -1,0 +1,26 @@
+TournamentResponseDto:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+    tournamentTypeDto:
+      $ref: '../../models/qualifications/objects/QualificationTypeDto.yaml#/QualificationTypeDto'
+    tournamentConstraintsDto:
+      $ref: '../../models/tournament/objects/TournamentConstraintsDto.yaml#/TournamentConstraintsDto'
+    qualificationsTypeDto:
+      $ref: '../../models/tournament/objects/TournamentTypeDto.yaml#/TournamentTypeDto'
+    abbreviation:
+      type: string
+    signingEnabled:
+      type: boolean
+    createdBy:
+      type: string
+      format: uuid
+
+TournamentResponseDtoList:
+  type: array
+  items:
+    $ref: '#/TournamentResponseDto'

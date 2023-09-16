@@ -1,0 +1,16 @@
+CreateTournamentRequest:
+  type: object
+  properties:
+    qualificationType:
+      $ref: '../../models/qualifications/objects/QualificationTypeDto.yaml#/QualificationTypeDto'
+    tournamentConstraints:
+      $ref: '../../models/tournament/objects/TournamentConstraintsDto.yaml#/TournamentConstraintsDto'
+    tournamentType:
+      $ref: '../../models/tournament/objects/TournamentTypeDto.yaml#/TournamentTypeDto'
+    name:
+      type: string
+      minLength: 3
+    abbreviation:
+      type: string
+      minLength: 2
+      maxLength: 4
