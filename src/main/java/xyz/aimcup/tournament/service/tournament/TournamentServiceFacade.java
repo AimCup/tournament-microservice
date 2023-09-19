@@ -44,6 +44,7 @@ public class TournamentServiceFacade implements TournamentBaseService,
         var createdTournament = getTournamentService(tournamentType)
             .createTournament(createTournamentRequest);
         prepareQualificationsFor(createdTournament);
+        createdTournament.getTournamentConstraints().setTournament(createdTournament);
         return tournamentRepository.save(createdTournament);
     }
 
