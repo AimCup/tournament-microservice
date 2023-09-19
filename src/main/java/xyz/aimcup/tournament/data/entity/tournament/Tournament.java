@@ -45,6 +45,7 @@ public abstract class Tournament {
     private String abbreviation;
 
     @Column(name = "tournament_type", nullable = false, insertable = false, updatable = false)
+    @Enumerated(EnumType.STRING)
     private TournamentType tournamentType;
 
     @Column(nullable = false)
