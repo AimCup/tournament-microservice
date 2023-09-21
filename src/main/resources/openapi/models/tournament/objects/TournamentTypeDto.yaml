@@ -1,6 +1,0 @@
-TournamentTypeDto:
-  type: string
-  enum:
-    - PLAYER_VS
-    - TEAM_VS
-    - INTERNATIONAL

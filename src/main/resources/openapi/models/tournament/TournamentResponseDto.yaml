@@ -2,16 +2,52 @@ TournamentResponseDto:
   type: object
   properties:
     id:
+      required: true
       type: string
       format: uuid
     name:
       type: string
-    tournamentTypeDto:
-      $ref: '../../models/qualifications/objects/QualificationTypeDto.yaml#/QualificationTypeDto'
-    tournamentConstraintsDto:
-      $ref: '../../models/tournament/objects/TournamentConstraintsDto.yaml#/TournamentConstraintsDto'
-    qualificationsTypeDto:
-      $ref: '../../models/tournament/objects/TournamentTypeDto.yaml#/TournamentTypeDto'
+    tournamentType:
+      type: string
+      required: true
+      enum:
+        - PLAYER_VS
+        - TEAM_VS
+        - INTERNATIONAL
+    tournamentData:
+      type: object
+      required: true
+      properties:
+        refereesLimit:
+          type: integer
+          required: true
+        commentatorsLimit:
+          type: integer
+          required: true
+        streamersLimit:
+          type: integer
+          required: true
+        participantsLimit:
+          type: integer
+          required: true
+        playersPerBeatmapLimit:
+          type: integer
+          minimum: 1
+          maximum: 8
+          required: true
+        minimumRankLimit:
+          type: integer
+        maximumRankLimit:
+          type: integer
+        participantsPerQualificationSpotLimit:
+          type: integer
+          required: true
+    qualificationType:
+      type: string
+      required: true
+      enum:
+        - GROUP_STAGES
+        - QUALIFICATION_ROOMS
     abbreviation:
       type: string
     signingEnabled:

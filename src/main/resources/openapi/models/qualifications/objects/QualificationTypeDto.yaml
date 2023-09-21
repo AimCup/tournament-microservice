@@ -1,6 +1,0 @@
-QualificationTypeDto:
-  type: string
-  required: true
-  enum:
-    - GROUP_STAGES
-    - QUALIFICATION_ROOMS
