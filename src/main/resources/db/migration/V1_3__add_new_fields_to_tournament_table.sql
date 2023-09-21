@@ -3,7 +3,7 @@ ALTER TABLE tournament
 ALTER TABLE tournament
     ADD COLUMN qualification_type VARCHAR(31) NOT NULL;
 ALTER TABLE tournament
-    ADD FOREIGN KEY (id) REFERENCES tournament_constraints (tournament_id);
+    ADD FOREIGN KEY (id) REFERENCES tournament_data (tournament_id);
 ALTER TABLE qualification_group
     ADD FOREIGN KEY (tournament_id) REFERENCES tournament (id);
 ALTER TABLE qualification_room

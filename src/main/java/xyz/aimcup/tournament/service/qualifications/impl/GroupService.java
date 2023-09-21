@@ -13,7 +13,7 @@ public class GroupService implements QualificationService {
     @Override
     public void createQualificationsFor(Tournament tournament) {
         final var numberOfSpotsToCreate = tournament.calculateNumberOfQualificationSpots();
-        final var participantsPerGroup = tournament.getTournamentConstraints()
+        final var participantsPerGroup = tournament.getTournamentData()
             .getParticipantsPerQualificationSpotLimit();
         var qualificationGroups = new HashSet<QualificationGroup>();
 
