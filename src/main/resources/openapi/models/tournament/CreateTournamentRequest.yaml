@@ -2,11 +2,46 @@ CreateTournamentRequest:
   type: object
   properties:
     qualificationType:
-      $ref: '../../models/qualifications/objects/QualificationTypeDto.yaml#/QualificationTypeDto'
-    tournamentConstraints:
-      $ref: '../../models/tournament/objects/TournamentConstraintsDto.yaml#/TournamentConstraintsDto'
+      type: string
+      required: true
+      enum:
+        - GROUP_STAGES
+        - QUALIFICATION_ROOMS
+    tournamentData:
+      type: object
+      required: true
+      properties:
+        refereesLimit:
+          type: integer
+          required: true
+        commentatorsLimit:
+          type: integer
+          required: true
+        streamersLimit:
+          type: integer
+          required: true
+        participantsLimit:
+          type: integer
+          required: true
+        playersPerBeatmapLimit:
+          type: integer
+          minimum: 1
+          maximum: 8
+          required: true
+        minimumRankLimit:
+          type: integer
+        maximumRankLimit:
+          type: integer
+        participantsPerQualificationSpotLimit:
+          type: integer
+          required: true
     tournamentType:
-      $ref: '../../models/tournament/objects/TournamentTypeDto.yaml#/TournamentTypeDto'
+      type: string
+      required: true
+      enum:
+        - PLAYER_VS
+        - TEAM_VS
+        - INTERNATIONAL
     name:
       type: string
       minLength: 3
