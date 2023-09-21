@@ -55,7 +55,7 @@ public abstract class Tournament {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id")
     @MapsId
-    private TournamentConstraints tournamentConstraints;
+    private TournamentData tournamentData;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
     private Set<QualificationGroup> qualificationGroups;
@@ -71,8 +71,8 @@ public abstract class Tournament {
     private UUID createdBy;
 
     public Integer calculateNumberOfQualificationSpots() {
-        return tournamentConstraints.getParticipantsLimit()
-            / tournamentConstraints.getParticipantsPerQualificationSpotLimit();
+        return tournamentData.getParticipantsLimit()
+            / tournamentData.getParticipantsPerQualificationSpotLimit();
         //TODO: EXTEND THIS TO THROW ERROW
     }
 }
