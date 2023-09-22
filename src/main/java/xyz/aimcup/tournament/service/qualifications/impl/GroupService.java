@@ -21,12 +21,12 @@ public class GroupService implements QualificationService {
             numberOfCreatedSpot++) {
             qualificationGroups.add(
                 QualificationGroup.builder()
-                    .tournament(tournament)
+                    .qualificationPhase(tournament.getQualificationPhase())
                     .participantsLimit(participantsPerGroup)
                     .build()
             );
         }
-        tournament.setQualificationGroups(qualificationGroups);
+        tournament.getQualificationPhase().setQualificationGroups(qualificationGroups);
     }
 
     @Override
