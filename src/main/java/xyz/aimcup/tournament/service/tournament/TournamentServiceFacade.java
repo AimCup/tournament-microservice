@@ -44,6 +44,7 @@ public class TournamentServiceFacade implements TournamentBaseService,
         var createdTournament = getTournamentService(tournamentType)
             .createTournament(createTournamentRequest);
         prepareQualificationsFor(createdTournament);
+        preparePhasesFor(createdTournament);
         return tournamentRepository.save(createdTournament);
     }
 
@@ -71,6 +72,11 @@ public class TournamentServiceFacade implements TournamentBaseService,
 
         qualificationServiceFacade.getQualificationService(qualificationType)
             .createQualificationsFor(tournament);
+    }
+
+    private void preparePhasesFor(Tournament tournament) {
+        tournament.getRegistrationPhase().setTournament(tournament);
+        tournament.getQualificationPhase().setTournament(tournament);
     }
 
     private TournamentType getTournamentType(String tournamentType) {

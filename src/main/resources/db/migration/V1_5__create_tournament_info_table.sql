@@ -8,7 +8,7 @@ CREATE TABLE tournament_info
 );
 
 ALTER TABLE tournament_data
-    ADD FOREIGN KEY (tournament_rules_id) REFERENCES tournament_info (id);
+    ADD FOREIGN KEY (tournament_info_id) REFERENCES tournament_info (id);
 
 CREATE OR REPLACE FUNCTION update_tournament_info_updated_at_column()
 RETURNS TRIGGER AS $$

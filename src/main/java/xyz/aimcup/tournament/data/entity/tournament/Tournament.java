@@ -21,8 +21,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
-import xyz.aimcup.tournament.data.entity.qualification.QualificationRoom;
+import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
+import xyz.aimcup.tournament.data.entity.phase.QualificationPhase;
+import xyz.aimcup.tournament.data.entity.phase.RegistrationPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
 
 @Entity
@@ -44,6 +45,14 @@ public abstract class Tournament {
     @Column(nullable = false)
     private String abbreviation;
 
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean signingEnabled = false;
+
+    @Column(nullable = false)
+    private UUID createdBy;
+
+
     @Column(name = "tournament_type", nullable = false, insertable = false, updatable = false)
     @Enumerated(EnumType.STRING)
     private TournamentType tournamentType;
@@ -52,27 +61,26 @@ public abstract class Tournament {
     @Enumerated(EnumType.STRING)
     private QualificationType qualificationType;
 
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id")
     @MapsId
     private TournamentData tournamentData;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
-    private Set<QualificationGroup> qualificationGroups;
+    @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
+    private RegistrationPhase registrationPhase;
+
+
+    @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
+    private QualificationPhase qualificationPhase;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
-    private Set<QualificationRoom> qualificationRooms;
-
-    @Column(nullable = false)
-    @Builder.Default
-    private Boolean signingEnabled = false;
-
-    @Column(nullable = false)
-    private UUID createdBy;
+    private Set<BracketsPhase> bracketsPhases;
 
     public Integer calculateNumberOfQualificationSpots() {
         return tournamentData.getParticipantsLimit()
-            / tournamentData.getParticipantsPerQualificationSpotLimit();
+            / tournamentData.getParticipantsPerQualificationSpotLimit() + 1;
         //TODO: EXTEND THIS TO THROW ERROW
     }
 }

@@ -52,11 +52,11 @@ public class TournamentData {
     @Column(nullable = false)
     private Integer participantsPerQualificationSpotLimit;
 
-    @Column(name = "tournament_rules_id", nullable = false, insertable = false, updatable = false)
-    private UUID tournamentRulesId;
+    @Column(name = "tournament_info_id", nullable = false, insertable = false, updatable = false)
+    private UUID tournamentInfoId;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "tournament_rules_id", referencedColumnName = "id")
+    @JoinColumn(name = "tournament_info_id", referencedColumnName = "id")
     private TournamentInfo tournamentInfo;
 
     //todo: ADD VALIDATION TO MAX, MIN RANK, AND TO

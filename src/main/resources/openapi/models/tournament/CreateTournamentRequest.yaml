@@ -1,12 +1,13 @@
 CreateTournamentRequest:
   type: object
   properties:
-    qualificationType:
+    tournamentType:
       type: string
       required: true
       enum:
-        - GROUP_STAGES
-        - QUALIFICATION_ROOMS
+        - PLAYER_VS
+        - TEAM_VS
+        - INTERNATIONAL
     tournamentData:
       type: object
       required: true
@@ -34,14 +35,39 @@ CreateTournamentRequest:
           type: integer
         participantsPerQualificationSpotLimit:
           type: integer
+          minimum: 1
+          maximum: 16
           required: true
-    tournamentType:
+    qualificationType:
       type: string
       required: true
       enum:
-        - PLAYER_VS
-        - TEAM_VS
-        - INTERNATIONAL
+        - GROUP_STAGES
+        - QUALIFICATION_ROOMS
+    registrationPhase:
+      type: object
+      required: true
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          required: true
+        endTime:
+          type: string
+          format: date-time
+          required: true
+    qualificationPhase:
+      type: object
+      required: true
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          required: true
+        endTime:
+          type: string
+          format: date-time
+          required: true
     name:
       type: string
       minLength: 3

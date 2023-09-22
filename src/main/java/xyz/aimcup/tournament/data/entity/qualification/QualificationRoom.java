@@ -9,13 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Max;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import xyz.aimcup.tournament.data.entity.tournament.Tournament;
+import xyz.aimcup.tournament.data.entity.phase.QualificationPhase;
 
 @Entity
 @NoArgsConstructor
@@ -28,11 +29,8 @@ public class QualificationRoom implements QualificationSpot {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tournament_id", referencedColumnName = "id")
-    private Tournament tournament;
-
     @Column(nullable = false)
+    @Max(16)
     private Integer participantsLimit;
 
     private Integer refereesLimit;
@@ -40,5 +38,12 @@ public class QualificationRoom implements QualificationSpot {
     private LocalDateTime startSignupsTime;
 
     private LocalDateTime endSignupsTime;
+
+
+    @Column(name = "qualification_phase_id", nullable = false, insertable = false, updatable = false)
+    private UUID qualificationPhaseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "qualification_phase_id", referencedColumnName = "id")
+    private QualificationPhase qualificationPhase;
 
 }

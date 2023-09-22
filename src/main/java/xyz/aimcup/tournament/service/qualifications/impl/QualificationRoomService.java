@@ -21,12 +21,12 @@ public class QualificationRoomService implements QualificationService {
             numberOfCreatedSpot++) {
             qualificationRooms.add(
                 QualificationRoom.builder()
-                    .tournament(tournament)
+                    .qualificationPhase(tournament.getQualificationPhase())
                     .participantsLimit(participantsPerRoom)
                     .build()
             );
         }
-        tournament.setQualificationRooms(qualificationRooms);
+        tournament.getQualificationPhase().setQualificationRooms(qualificationRooms);
     }
 
     @Override

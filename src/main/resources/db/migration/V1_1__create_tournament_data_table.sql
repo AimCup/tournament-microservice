@@ -9,5 +9,5 @@ CREATE TABLE tournament_data
     minimum_rank_limit                        INT,
     maximum_rank_limit                        INT,
     participants_per_qualification_spot_limit INT              NOT NULL,
-    tournament_rules_id                       UUID
+    tournament_info_id                        UUID UNIQUE
 );
