@@ -3,13 +3,9 @@ package xyz.aimcup.tournament.data.entity.phase;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 import lombok.Getter;
@@ -25,16 +21,7 @@ import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 @Getter
 @Setter
 @SuperBuilder
-public class QualificationPhase implements TournamentPhase {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
-    private LocalDateTime startTime;
-
-    private LocalDateTime endTime;
-
+public class QualificationPhase extends TournamentPhase {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "qualificationPhase", orphanRemoval = true)
     private Set<QualificationGroup> qualificationGroups;
@@ -49,4 +36,6 @@ public class QualificationPhase implements TournamentPhase {
     @OneToOne
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;
+
+
 }
