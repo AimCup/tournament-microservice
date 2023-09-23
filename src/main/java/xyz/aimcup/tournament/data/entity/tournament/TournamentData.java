@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,6 +45,8 @@ public class TournamentData {
     private Integer streamersLimit;
 
     @Column(nullable = false)
+    @Max(8)
+    @Min(1)
     private Integer playersPerBeatmapLimit;
 
     private Integer minimumRankLimit;
@@ -59,5 +63,7 @@ public class TournamentData {
     @JoinColumn(name = "tournament_info_id", referencedColumnName = "id")
     private TournamentInfo tournamentInfo;
 
-    //todo: ADD VALIDATION TO MAX, MIN RANK, AND TO
+    public Integer calculateNumberOfQualificationSpots() {
+        return participantsLimit / participantsPerQualificationSpotLimit + 1;
+    }
 }
