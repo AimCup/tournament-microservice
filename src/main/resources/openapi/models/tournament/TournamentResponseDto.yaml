@@ -60,22 +60,20 @@ TournamentResponseDto:
           type: string
           format: date-time
           required: true
-      qualificationPhase:
-        type: object
-        required: true
-        properties:
-          startTime:
-            type: string
-            format: date-time
-            required: true
-          endTime:
-            type: string
-            format: date-time
-            required: true
+    qualificationPhase:
+      type: object
+      required: true
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          required: true
+        endTime:
+          type: string
+          format: date-time
+          required: true
     abbreviation:
       type: string
-    signingEnabled:
-      type: boolean
     createdBy:
       type: string
       format: uuid

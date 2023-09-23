@@ -16,7 +16,6 @@ import jakarta.persistence.OneToOne;
 import java.util.Set;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,10 +43,6 @@ public abstract class Tournament {
 
     @Column(nullable = false)
     private String abbreviation;
-
-    @Column(nullable = false)
-    @Builder.Default
-    private Boolean signingEnabled = false;
 
     @Column(nullable = false)
     private UUID createdBy;
@@ -78,9 +73,4 @@ public abstract class Tournament {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
     private Set<BracketsPhase> bracketsPhases;
 
-    public Integer calculateNumberOfQualificationSpots() {
-        return tournamentData.getParticipantsLimit()
-            / tournamentData.getParticipantsPerQualificationSpotLimit() + 1;
-        //TODO: EXTEND THIS TO THROW ERROW
-    }
 }

@@ -12,7 +12,8 @@ public class QualificationRoomService implements QualificationService {
 
     @Override
     public void createQualificationsFor(Tournament tournament) {
-        final var numberOfSpotsToCreate = tournament.calculateNumberOfQualificationSpots();
+        final var numberOfSpotsToCreate = tournament.getTournamentData()
+            .calculateNumberOfQualificationSpots();
         final var participantsPerRoom = tournament.getTournamentData()
             .getParticipantsPerQualificationSpotLimit();
         var qualificationRooms = new HashSet<QualificationRoom>();
