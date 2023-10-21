@@ -31,7 +31,7 @@ public class QualificationGroupService implements QualificationService {
     }
 
     @Override
-    public boolean getQualificationType(QualificationType qualificationType) {
+    public boolean isMatchingService(QualificationType qualificationType) {
         return QualificationType.GROUP_STAGES.equals(qualificationType);
     }
 }

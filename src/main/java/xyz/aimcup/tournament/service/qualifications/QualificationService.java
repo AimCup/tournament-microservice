@@ -6,5 +6,5 @@ import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 public interface QualificationService {
 
     void createQualificationsFor(Tournament tournament);
-    boolean getQualificationType(QualificationType qualificationType);
+    boolean isMatchingService(QualificationType qualificationType);
 }

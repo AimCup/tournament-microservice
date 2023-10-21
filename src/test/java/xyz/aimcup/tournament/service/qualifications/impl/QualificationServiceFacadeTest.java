@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import xyz.aimcup.tournament.service.qualifications.QualificationService;
+import xyz.aimcup.tournament.service.qualifications.QualificationServiceFacade;
 import xyz.aimcup.tournament.service.qualifications.exceptions.QualificationServiceNotFoundException;
 
 @ExtendWith(MockitoExtension.class)

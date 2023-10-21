@@ -1,10 +1,9 @@
-package xyz.aimcup.tournament.service.qualifications.impl;
+package xyz.aimcup.tournament.service.qualifications;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
-import xyz.aimcup.tournament.service.qualifications.QualificationService;
 import xyz.aimcup.tournament.service.qualifications.exceptions.QualificationServiceNotFoundException;
 
 @Component
@@ -16,7 +15,7 @@ public class QualificationServiceFacade {
     public QualificationService getQualificationService(QualificationType qualificationType) {
         return qualificationServices.stream()
             .filter(qualificationService -> qualificationService
-                .getQualificationType(qualificationType))
+                .isMatchingService(qualificationType))
             .findFirst()
             .orElseThrow(() -> new QualificationServiceNotFoundException(qualificationType));
     }

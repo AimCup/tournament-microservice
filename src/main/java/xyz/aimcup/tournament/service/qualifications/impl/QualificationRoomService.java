@@ -31,7 +31,7 @@ public class QualificationRoomService implements QualificationService {
     }
 
     @Override
-    public boolean getQualificationType(QualificationType qualificationType) {
+    public boolean isMatchingService(QualificationType qualificationType) {
         return QualificationType.QUALIFICATION_ROOMS.equals(qualificationType);
     }
 }
