@@ -27,7 +27,7 @@ public class TournamentsController implements TournamentsApi {
     @Override
     public ResponseEntity<UUID> createTournament(CreateTournamentRequest createTournamentRequest) {
         var tournament = tournamentServiceFacade.createTournament(createTournamentRequest);
-        return ResponseEntity.created(URI.create("/tournament/" + tournament.getId()))
+        return ResponseEntity.created(URI.create("/tournaments/" + tournament.getId()))
             .body(tournament.getId());
     }
 

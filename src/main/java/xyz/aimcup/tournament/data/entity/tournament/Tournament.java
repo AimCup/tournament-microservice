@@ -6,10 +6,13 @@ import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -20,6 +23,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import xyz.aimcup.tournament.data.entity.participant.Participant;
 import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.phase.QualificationPhase;
 import xyz.aimcup.tournament.data.entity.phase.RegistrationPhase;
@@ -72,5 +76,11 @@ public abstract class Tournament {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
     private Set<BracketsPhase> bracketsPhases;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "tournament_participants",
+        joinColumns = @JoinColumn(name = "tournament_id"),
+        inverseJoinColumns = @JoinColumn(name = "participant_id"))
+    private Set<Participant> participants;
 
 }

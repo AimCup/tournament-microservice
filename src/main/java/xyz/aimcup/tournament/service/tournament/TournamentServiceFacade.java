@@ -13,7 +13,7 @@ import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
 import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 import xyz.aimcup.tournament.data.entity.tournament.TournamentType;
 import xyz.aimcup.tournament.data.repository.tournament.TournamentRepository;
-import xyz.aimcup.tournament.service.qualifications.impl.QualificationServiceFacade;
+import xyz.aimcup.tournament.service.qualifications.QualificationServiceFacade;
 
 @Component
 public class TournamentServiceFacade implements TournamentBaseService,

@@ -1,0 +1,23 @@
+SearchMatchRequest:
+  type: object
+  properties:
+    tournamentId:
+      type: string
+      format: uuid
+    participantIds:
+      type: string
+      format: uuid
+    matchType:
+      type: string
+      required: true
+      enum:
+        - PLAYER_VS
+        - TEAM_VS
+    bracketsPhaseId:
+      type: string
+      format: uuid
+      description: Brackets phase id - only for brackets phase matches. Cannot be used with qualificationGroupId.
+    qualificationGroupId:
+      type: string
+      format: uuid
+      description: Qualification group id - only for qualification group matches. Cannot be used with bracketsPhaseId.

@@ -52,6 +52,10 @@ TournamentResponseDto:
       type: object
       required: true
       properties:
+        id:
+          type: string
+          format: uuid
+          required: true
         startTime:
           type: string
           format: date-time
@@ -64,6 +68,10 @@ TournamentResponseDto:
       type: object
       required: true
       properties:
+        id:
+          type: string
+          format: uuid
+          required: true
         startTime:
           type: string
           format: date-time

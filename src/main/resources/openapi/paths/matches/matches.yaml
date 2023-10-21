@@ -1,0 +1,36 @@
+get:
+  tags:
+    - Matches
+  summary: Return matches by provided query params
+  operationId: get-matches
+  parameters:
+    - name: searchMatchRequest
+      in: query
+      schema:
+        $ref: '../../models/match/SearchMatchRequest.yaml#/SearchMatchRequest'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../../models/match/MatchResponseDto.yaml#/MatchResponseDtoList'
+post:
+  tags:
+    - Matches
+  summary: Creates a new match
+  operationId: create-match
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/match/CreateMatchRequest.yaml#/CreateMatchRequest'
+  responses:
+    '201':
+      description: CREATED
+      content:
+        application/json:
+          schema:
+            type: string
+            format: uuid
+            description: Match UUID
