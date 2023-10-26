@@ -23,7 +23,7 @@ public class TeamBasedMatchService implements SpecificMatchService {
         final var matchToCreate = matchMapper.toTeamBasedMatchFrom(createMatchRequest);
         specificMatchAssigner.assignQualificationGroupToMatch(matchToCreate);
         specificMatchAssigner.assignBracketPhaseToMatch(matchToCreate);
-        specificMatchAssigner.assignParticipantToMatch(matchToCreate,
+        specificMatchAssigner.assignParticipantsToMatch(matchToCreate,
             createMatchRequest.getParticipantsIds());
         return repository.save(matchToCreate);
     }

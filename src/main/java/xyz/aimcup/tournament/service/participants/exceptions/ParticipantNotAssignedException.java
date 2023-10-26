@@ -1,6 +1,6 @@
 package xyz.aimcup.tournament.service.participants.exceptions;
 
-import java.util.Set;
+import java.util.SortedSet;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -12,7 +12,8 @@ public class ParticipantNotAssignedException extends RuntimeException {
         "Some participants were not found for %s: %s, found: %s";
 
     public ParticipantNotAssignedException(
-        String assigningSourceName, Set<UUID> participantsIds, Set<UUID> participantsIdsFound) {
+        String assigningSourceName, SortedSet<UUID> participantsIds,
+        SortedSet<UUID> participantsIdsFound) {
         super(PARTICIPANT_NOT_ASSIGNED.formatted(assigningSourceName, participantsIds,
             participantsIdsFound));
     }

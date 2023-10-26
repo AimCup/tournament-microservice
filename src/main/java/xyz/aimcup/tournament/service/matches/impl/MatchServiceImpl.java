@@ -16,7 +16,7 @@ import xyz.aimcup.tournament.service.matches.MatchBaseService;
 @RequiredArgsConstructor
 public class MatchServiceImpl implements MatchBaseService {
 
-    private final MatchRepository repository;
+    private final MatchRepository matchRepository;
     private final MatchMapper matchMapper;
 
 
@@ -24,7 +24,7 @@ public class MatchServiceImpl implements MatchBaseService {
     public List<MatchResponseDto> getMatches(SearchMatchRequest searchMatchRequest) {
         Specification<Match> searchSpecification = MatchSpecification
             .createSearchSpecification(searchMatchRequest);
-        final var matchesFound = repository.findAll(searchSpecification);
+        final var matchesFound = matchRepository.findAll(searchSpecification);
 
         return matchMapper.toMatchResponseDtoListFrom(matchesFound);
     }

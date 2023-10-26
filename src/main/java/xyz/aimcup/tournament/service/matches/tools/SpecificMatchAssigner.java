@@ -4,6 +4,7 @@ import static xyz.aimcup.tournament.data.entity.phase.TournamentPhaseType.BRACKE
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -45,15 +46,17 @@ public class SpecificMatchAssigner {
         }
     }
 
-    public void assignParticipantToMatch(Match match, Set<UUID> participantIds) {
-        final var numberOfParticipantsToFind = participantIds.size();
+    public void assignParticipantsToMatch(Match match, Set<UUID> participantsIds) {
+        final var numberOfParticipantsToFind = participantsIds.size();
         final var participantsFound = participantRepository
-            .findAllByIdInAndTournaments_Id(participantIds, match.getTournamentId());
+            .findAllByIdInAndTournaments_Id(participantsIds, match.getTournamentId());
         if (participantsFound.size() != numberOfParticipantsToFind) {
             throw new ParticipantNotAssignedException(
                 "TOURNAMENT: %s".formatted(match.getTournamentId()),
-                participantIds,
-                participantsFound.stream().map(Participant::getId).collect(Collectors.toSet()));
+                new TreeSet<>(participantsIds),
+                participantsFound.stream()
+                    .map(Participant::getId)
+                    .collect(Collectors.toCollection(TreeSet::new)));
         }
         match.setParticipants(participantsFound);
     }
