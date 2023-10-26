@@ -1,0 +1,24 @@
+{
+  "qualificationType": "GROUP_STAGES",
+  "tournamentType": "PLAYER_VS",
+  "tournamentData": {
+    "refereesLimit": 1,
+    "commentatorsLimit": 2,
+    "streamersLimit": 3,
+    "participantsLimit": 10,
+    "playersPerBeatmapLimit": 2,
+    "minimumRankLimit": 1,
+    "maximumRankLimit": 4,
+    "participantsPerQualificationSpotLimit": 3
+  },
+  "name": "tournamentName",
+  "abbreviation": "abbreviation",
+  "registrationPhase": {
+    "startTime": "2023-09-22T17:30:36",
+    "endTime": "2023-09-22T17:30:36"
+  },
+  "qualificationPhase": {
+    "startTime": "2023-09-22T17:30:36",
+    "endTime": "2023-09-22T17:30:36"
+  }
+}
