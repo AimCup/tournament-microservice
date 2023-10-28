@@ -1,8 +1,10 @@
-package xyz.aimcup.tournament.data.entity.match;
+package xyz.aimcup.tournament.data.entity.match.builder;
 
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import xyz.aimcup.tournament.data.entity.match.Match;
+import xyz.aimcup.tournament.data.entity.match.MatchType;
 import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
 

@@ -17,14 +17,13 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import xyz.aimcup.tournament.controller.builder.request.CreateMatchRequestTestCaseBuilder;
 import xyz.aimcup.tournament.data.entity.match.Match;
-import xyz.aimcup.tournament.data.entity.match.MatchTestCaseBuilder;
+import xyz.aimcup.tournament.data.entity.match.builder.MatchTestCaseBuilder;
 import xyz.aimcup.tournament.data.entity.match.MatchType;
 import xyz.aimcup.tournament.data.repository.match.MatchRepository;
 import xyz.aimcup.tournament.mapper.match.MatchMapperImpl;
 import xyz.aimcup.tournament.service.matches.tools.SpecificMatchAssigner;
 
 @ExtendWith(MockitoExtension.class)
-@NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
 class TeamBasedMatchServiceTest {
 
     @Spy
@@ -47,12 +46,12 @@ class TeamBasedMatchServiceTest {
         final var bracketsPhaseId = UUID.fromString("c9f9cd37-9033-4f03-9a7a-dc85309c0722");
         final var tournamentId = UUID.fromString("1b2976ab-ac68-4b12-bdbe-5e9c2cb43b05");
 
-        final var match = MatchTestCaseBuilder.buildMatchWith(tournamentId, MatchType.PLAYER_VS);
+        final var match = MatchTestCaseBuilder.buildMatchWith(tournamentId, MatchType.TEAM_VS);
         match.setBracketsPhaseId(bracketsPhaseId);
 
         final var createMatchRequest = CreateMatchRequestTestCaseBuilder
             .buildCreateMatchRequestWithBracketPhaseId(
-                tournamentId, MatchType.MatchTypeNames.PLAYER_VS, bracketsPhaseId);
+                tournamentId, MatchType.MatchTypeNames.TEAM_VS, bracketsPhaseId);
 
         //when
         teamBasedMatchService.createMatch(createMatchRequest);
@@ -61,8 +60,7 @@ class TeamBasedMatchServiceTest {
         verify(specificMatchAssigner, times(1)).assignBracketPhaseToMatch(any(Match.class));
         verify(specificMatchAssigner, times(1)).assignQualificationGroupToMatch(any(Match.class));
         verify(specificMatchAssigner, times(1))
-            .assignParticipantsToMatch(any(Match.class),
-                eq(createMatchRequest.getParticipantsIds()));
+            .assignParticipantsToMatch(any(Match.class), eq(createMatchRequest.getParticipantsIds()));
         verify(matchRepository, times(1)).save(matchArgumentCaptor.capture());
 
         assertThat(matchArgumentCaptor.getValue()).usingRecursiveComparison()
@@ -70,7 +68,7 @@ class TeamBasedMatchServiceTest {
     }
 
     @Test
-    void shouldReturnTrueIfIsPlayerVs() {
+    void shouldReturnTrueIfIsTeamVs() {
         //given
         final var matchType = MatchType.TEAM_VS;
         //when and then

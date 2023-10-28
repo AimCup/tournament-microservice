@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.jpa.domain.Specification;
 import xyz.aimcup.generated.model.SearchMatchRequest;
 import xyz.aimcup.tournament.controller.builder.dto.MatchResponseDtoTestCaseBuilder;
-import xyz.aimcup.tournament.data.entity.match.MatchTestCaseBuilder;
+import xyz.aimcup.tournament.data.entity.match.builder.MatchTestCaseBuilder;
 import xyz.aimcup.tournament.data.entity.match.MatchType;
 import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
