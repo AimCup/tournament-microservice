@@ -23,13 +23,14 @@ import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 @SuperBuilder
 public class BracketsPhase extends TournamentPhase {
 
-    private Integer seedSize;
-
     @Column(name = "tournament_id", nullable = false, insertable = false, updatable = false)
     private UUID tournamentId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;
+
+    @Column(name = "seed_size", nullable = false)
+    private Integer seedSize;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bracketsPhase", orphanRemoval = true)
     private Set<Match> matches;

@@ -20,12 +20,11 @@ public class QualificationGroupService implements QualificationService {
 
         for (int numberOfCreatedSpot = 0; numberOfCreatedSpot < numberOfSpotsToCreate;
             numberOfCreatedSpot++) {
-            qualificationGroups.add(
-                QualificationGroup.builder()
-                    .qualificationPhase(tournament.getQualificationPhase())
-                    .participantsLimit(participantsPerGroup)
-                    .build()
-            );
+            final var qualificationGroup = QualificationGroup.builder()
+                .qualificationPhase(tournament.getQualificationPhase())
+                .participantsLimit(participantsPerGroup)
+                .build();
+            qualificationGroups.add(qualificationGroup);
         }
         tournament.getQualificationPhase().setQualificationGroups(qualificationGroups);
     }
