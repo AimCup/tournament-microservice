@@ -10,7 +10,7 @@
     </parent>
     <groupId>xyz.aimcup</groupId>
     <artifactId>tournament-microservice</artifactId>
-    <version>1.0.8-SNAPSHOT</version>
+    <version>1.0.8</version>
     <name>tournament-microservice</name>
     <properties>
         <java.version>17</java.version>
