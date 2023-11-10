@@ -6,6 +6,8 @@ server:
   servlet:
     context-path: /tournament
   port: 8101
+  error:
+    include-message: always
 spring:
   application:
     name: tournament-microservice

@@ -8,11 +8,11 @@ info:
     email: aimcupdev@gmail.com
 
 paths:
-  /tournament:
-    $ref: './paths/tournament/create-tournament-request.yaml'
-  /tournament/{tournamentId}:
-    $ref: './paths/tournament/tournament-by-id.yaml'
-  /tourmament/{tournamentId}/participate:
-    $ref: './paths/tournament/participate.yaml'
   /tournaments:
     $ref: './paths/tournaments/tournaments.yaml'
+  /tournaments/{tournamentId}:
+    $ref: './paths/tournaments/tournament.yaml'
+  /tourmaments/{tournamentId}/participate:
+    $ref: './paths/tournaments/participate.yaml'
+  /matches:
+    $ref: './paths/matches/matches.yaml'
