@@ -11,4 +11,9 @@ public class TestController {
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("Hello World");
     }
+
+    @GetMapping("/unauthenticated")
+    public ResponseEntity<String> unauthenticated() {
+        return ResponseEntity.ok("Hello World");
+    }
 }
