@@ -36,7 +36,11 @@ spring:
         provider:
           aimcup:
             issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
+            jwk-set-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/certs
             authorization-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/auth
+            token-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/token
+            user-info-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
         registration:
           aimcup:
             provider: aimcup
