@@ -36,6 +36,7 @@ spring:
         provider:
           aimcup:
             issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
+            authorization-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/auth
         registration:
           aimcup:
             provider: aimcup
