@@ -26,6 +26,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         ClientRegistration clientRegistration = this.clientRegistrationRepository.findByRegistrationId("aimcup");
         log.info("clientRegistration: {}", clientRegistration);
+        log.info("ProviderDetails: {}", clientRegistration.getProviderDetails());
+        log.info("UserInfoEndpoint: {}", clientRegistration.getProviderDetails().getUserInfoEndpoint());
         httpSecurity
                 .oauth2Client(Customizer.withDefaults())
                 .oauth2Login(Customizer.withDefaults());
