@@ -35,12 +35,7 @@ spring:
       client:
         provider:
           aimcup:
-            issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
-            jwk-set-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/certs
-            authorization-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/auth
-            token-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/token
-            user-info-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/userinfo
-            user-name-attribute: preferred_username
+            issuer-uri: https://localhost:8202/realms/aimcup-realm
         registration:
           aimcup:
             provider: aimcup
@@ -48,4 +43,3 @@ spring:
             client-id: aimcup
             client-secret: MUSDaD5wr0p06E8rwlVXkteKagnr29lU
             scope: profile,openid,offline_access
-            redirect-uri: https://api-stg.aimcup.xyz/tournament/keycloak-test
