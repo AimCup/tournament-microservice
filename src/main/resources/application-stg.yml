@@ -8,7 +8,6 @@ server:
   port: 8201
   error:
     include-message: always
-  address: https://api-stg.aimcup.xyz/
 spring:
   application:
     name: tournament-microservice
