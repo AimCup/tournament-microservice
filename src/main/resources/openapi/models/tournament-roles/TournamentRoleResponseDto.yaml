@@ -1,0 +1,17 @@
+TournamentRoleResponseDto:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+    description:
+      type: string
+    permissions:
+      type: array
+      items:
+        type: string
+    tournamentId:
+      type: string
+      format: uuid

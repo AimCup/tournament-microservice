@@ -2,8 +2,8 @@ eureka:
   client:
     enabled: false
 server:
-  servlet:
-    context-path: /tournament
+#  servlet:
+#    context-path: /tournament
   port: 8080
   error:
     include-message: always
@@ -29,3 +29,17 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      client:
+        provider:
+          aimcup:
+            issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
+        registration:
+          aimcup:
+            provider: aimcup
+            client-name: aimcup
+            client-id: aimcup
+            client-secret: MUSDaD5wr0p06E8rwlVXkteKagnr29lU
+            scope: profile,openid,offline_access
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'

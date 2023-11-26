@@ -1,0 +1,14 @@
+CreateTournamentRoleRequestDto:
+  type: object
+  properties:
+    name:
+      type: string
+      required: true
+    description:
+      type: string
+      required: true
+    permissions:
+      type: array
+      required: true
+      items:
+        type: string
