@@ -26,8 +26,7 @@ class QualificationRoomServiceTest {
         var qualificationPhase = new QualificationPhase();
 
         given(tournament.getTournamentData()).willReturn(Mockito.mock(TournamentData.class));
-        given(tournament.getTournamentData().calculateNumberOfQualificationSpots())
-            .willReturn(5);
+        given(tournament.calculateNumberOfQualificationSpots()).willReturn(5);
         given(tournament.getTournamentData().getParticipantsPerQualificationSpotLimit())
             .willReturn(2);
         given(tournament.getQualificationPhase()).willReturn(qualificationPhase);

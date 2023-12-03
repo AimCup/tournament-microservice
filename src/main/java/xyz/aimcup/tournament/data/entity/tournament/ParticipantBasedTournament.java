@@ -4,10 +4,6 @@ package xyz.aimcup.tournament.data.entity.tournament;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import java.util.Set;
 import lombok.Getter;
@@ -25,9 +21,11 @@ import xyz.aimcup.tournament.data.entity.tournament.TournamentType.TournamentTyp
 @DiscriminatorValue(TournamentTypeNames.PARTICIPANT_VS)
 public final class ParticipantBasedTournament extends Tournament {
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "tournament_participants",
-        joinColumns = @JoinColumn(name = "tournament_id"),
-        inverseJoinColumns = @JoinColumn(name = "participant_id"))
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament")
     private Set<Participant> participants;
+
+    @Override
+    public Integer calculateNumberOfQualificationSpots() {
+        return participants.size() / getTournamentData().getParticipantsPerQualificationSpotLimit() + 1;
+    }
 }

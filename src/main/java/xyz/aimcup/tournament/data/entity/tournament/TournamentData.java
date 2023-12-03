@@ -1,12 +1,10 @@
 package xyz.aimcup.tournament.data.entity.tournament;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -51,7 +49,4 @@ public class TournamentData {
     @Min(1)
     private Integer participantsPerQualificationSpotLimit;
 
-    public Integer calculateNumberOfQualificationSpots() {
-        return participantsLimit / participantsPerQualificationSpotLimit + 1;
-    }
 }
