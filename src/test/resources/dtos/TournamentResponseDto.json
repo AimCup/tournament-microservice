@@ -1,13 +1,10 @@
 {
   "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
   "name": "tournamentName",
-  "tournamentType": "PLAYER_VS",
+  "tournamentType": "PARTICIPANT_VS",
   "tournamentData": {
-    "refereesLimit": 1,
-    "commentatorsLimit": 2,
-    "streamersLimit": 3,
-    "participantsLimit": 10,
-    "playersPerBeatmapLimit": 2,
+    "teamSize": 3,
+    "maxTeamSize": 10,
     "minimumRankLimit": 1,
     "maximumRankLimit": 4,
     "participantsPerQualificationSpotLimit": 3

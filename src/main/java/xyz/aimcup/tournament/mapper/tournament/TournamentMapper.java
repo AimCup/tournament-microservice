@@ -6,7 +6,7 @@ import org.mapstruct.ReportingPolicy;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
 import xyz.aimcup.generated.model.TournamentResponseDto;
 import xyz.aimcup.tournament.data.entity.tournament.InternationalTournament;
-import xyz.aimcup.tournament.data.entity.tournament.PlayerBasedTournament;
+import xyz.aimcup.tournament.data.entity.tournament.ParticipantBasedTournament;
 import xyz.aimcup.tournament.data.entity.tournament.TeamBasedTournament;
 import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 
@@ -17,7 +17,7 @@ public interface TournamentMapper {
 
     List<TournamentResponseDto> toTournamentResponseDtoListFrom(List<Tournament> tournaments);
 
-    PlayerBasedTournament toPlayerBasedTournamentFrom(
+    ParticipantBasedTournament toParticipantBasedTournamentFrom(
         CreateTournamentRequest createTournamentRequest);
 
     InternationalTournament toInternationalTournamentFrom(

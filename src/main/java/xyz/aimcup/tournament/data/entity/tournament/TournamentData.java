@@ -33,35 +33,23 @@ public class TournamentData {
     private Tournament tournament;
 
     @Column(nullable = false)
-    private Integer participantsLimit;
-
-    @Column(nullable = false)
-    private Integer refereesLimit;
-
-    @Column(nullable = false)
-    private Integer commentatorsLimit;
-
-    @Column(nullable = false)
-    private Integer streamersLimit;
-
-    @Column(nullable = false)
     @Max(8)
     @Min(1)
-    private Integer playersPerBeatmapLimit;
+    private Integer teamSize;
 
+    @Column(nullable = false)
+    private Integer maxTeamSize;
+
+    @Column(nullable = false)
     private Integer minimumRankLimit;
 
+    @Column(nullable = false)
     private Integer maximumRankLimit;
 
     @Column(nullable = false)
+    @Max(16)
+    @Min(1)
     private Integer participantsPerQualificationSpotLimit;
-
-    @Column(name = "tournament_info_id", nullable = false, insertable = false, updatable = false)
-    private UUID tournamentInfoId;
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "tournament_info_id", referencedColumnName = "id")
-    private TournamentInfo tournamentInfo;
 
     public Integer calculateNumberOfQualificationSpots() {
         return participantsLimit / participantsPerQualificationSpotLimit + 1;

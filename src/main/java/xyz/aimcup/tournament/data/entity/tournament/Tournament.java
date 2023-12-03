@@ -66,6 +66,11 @@ public abstract class Tournament {
     @MapsId
     private TournamentData tournamentData;
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "id")
+    @MapsId
+    private TournamentInfo tournamentInfo;
+
     @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
     private RegistrationPhase registrationPhase;
 
@@ -76,11 +81,5 @@ public abstract class Tournament {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
     private Set<BracketsPhase> bracketsPhases;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "tournament_participants",
-        joinColumns = @JoinColumn(name = "tournament_id"),
-        inverseJoinColumns = @JoinColumn(name = "participant_id"))
-    private Set<Participant> participants;
 
 }

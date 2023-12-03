@@ -25,10 +25,10 @@ public class TournamentInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID tournamentId;
 
     @OneToOne(mappedBy = "tournamentInfo")
-    private TournamentData tournamentData;
+    private Tournament tournament;
 
     @Column(name = "rules", length = Length.LOB_DEFAULT)
     private String rules;
@@ -36,10 +36,13 @@ public class TournamentInfo {
     @Column(name = "prizes", length = Length.LOB_DEFAULT)
     private String prizes;
 
-    @Column(name = "edited_by", nullable = false)
-    private UUID editedBy;
+    @Column(name = "created_by", nullable = false)
+    private UUID createdBy;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
+
+    @Column(name = "version")
+    private Integer version;
 
 }

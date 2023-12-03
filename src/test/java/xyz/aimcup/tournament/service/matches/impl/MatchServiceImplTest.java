@@ -3,7 +3,7 @@ package xyz.aimcup.tournament.service.matches.impl;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static xyz.aimcup.tournament.data.entity.match.MatchType.MatchTypeNames.PLAYER_VS;
+import static xyz.aimcup.tournament.data.entity.match.MatchType.MatchTypeNames.PARTICIPANT_VS;
 import static xyz.aimcup.tournament.data.entity.match.MatchType.MatchTypeNames.TEAM_VS;
 
 import java.util.List;
@@ -48,7 +48,7 @@ class MatchServiceImplTest {
             .build();
 
         final var match = MatchTestCaseBuilder.buildMatchEntityAssignedToQualificationsGroup(
-            UUID.randomUUID(), qualificationGroup, MatchType.PLAYER_VS);
+            UUID.randomUUID(), qualificationGroup, MatchType.PARTICIPANT_VS);
 
         //when
         when(matchRepository.findAll(any(Specification.class))).thenReturn(List.of(match));
@@ -58,7 +58,7 @@ class MatchServiceImplTest {
         assertThat(matchesFound.get(0)).usingRecursiveAssertion()
             .isEqualTo(
                 MatchResponseDtoTestCaseBuilder.buildMatchResponseDtoWithQualificationGroupId(
-                    match.getId(), PLAYER_VS, qualificationGroupId));
+                    match.getId(), PARTICIPANT_VS, qualificationGroupId));
     }
 
     @Test

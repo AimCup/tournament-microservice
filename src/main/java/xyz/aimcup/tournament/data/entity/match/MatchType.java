@@ -8,14 +8,14 @@ public enum MatchType {
 
     TEAM_VS(MatchTypeNames.TEAM_VS),
 
-    PLAYER_VS(MatchTypeNames.PLAYER_VS);
+    PARTICIPANT_VS(MatchTypeNames.PARTICIPANT_VS);
 
 
     @NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
     public static class MatchTypeNames {
 
         public static final String TEAM_VS = "TEAM_VS";
-        public static final String PLAYER_VS = "PLAYER_VS";
+        public static final String PARTICIPANT_VS = "PARTICIPANT_VS";
     }
 
     MatchType(String value) {

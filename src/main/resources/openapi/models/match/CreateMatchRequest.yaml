@@ -17,7 +17,7 @@ CreateMatchRequest:
       type: string
       required: true
       enum:
-        - PLAYER_VS
+        - PARTICIPANT_VS
         - TEAM_VS
     bracketsPhaseId:
       type: string
@@ -27,13 +27,4 @@ CreateMatchRequest:
       type: string
       format: uuid
       description: Qualification group id - required when bracketsPhaseId is not provided
-    refereesLimit:
-      type: integer
-      required: true
-    commentatorsLimit:
-      type: integer
-      required: true
-    streamersLimit:
-      type: integer
-      required: true
 

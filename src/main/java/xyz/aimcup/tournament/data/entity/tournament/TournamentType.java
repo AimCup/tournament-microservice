@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public enum TournamentType {
     TEAM_VS(TournamentTypeNames.TEAM_VS),
-    PLAYER_VS(TournamentTypeNames.PLAYER_VS),
+    PARTICIPANT_VS(TournamentTypeNames.PARTICIPANT_VS),
     INTERNATIONAL(TournamentTypeNames.INTERNATIONAL);
 
 
@@ -14,7 +14,7 @@ public enum TournamentType {
     public static class TournamentTypeNames {
 
         public static final String TEAM_VS = "TEAM_VS";
-        public static final String PLAYER_VS = "PLAYER_VS";
+        public static final String PARTICIPANT_VS = "PARTICIPANT_VS";
         public static final String INTERNATIONAL = "INTERNATIONAL";
     }
 

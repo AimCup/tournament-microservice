@@ -1,5 +1,4 @@
-package xyz.aimcup.tournament.data.entity.tournament;
-
+package xyz.aimcup.tournament.data.entity.match;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -7,14 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import xyz.aimcup.tournament.data.entity.tournament.TournamentType.TournamentTypeNames;
+import xyz.aimcup.tournament.data.entity.match.MatchType.MatchTypeNames;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
 @SuperBuilder
-@DiscriminatorValue(TournamentTypeNames.PLAYER_VS)
-public final class PlayerBasedTournament extends Tournament {
+@DiscriminatorValue(MatchTypeNames.PARTICIPANT_VS)
+public class ParticipantBasedMatch extends Match {
 
 }

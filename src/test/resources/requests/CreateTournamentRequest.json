@@ -2,11 +2,8 @@
   "qualificationType": "GROUP_STAGES",
   "tournamentType": "PLAYER_VS",
   "tournamentData": {
-    "refereesLimit": 1,
-    "commentatorsLimit": 2,
-    "streamersLimit": 3,
     "participantsLimit": 10,
-    "playersPerBeatmapLimit": 2,
+    "participantsPerBeatmapLimit": 2,
     "minimumRankLimit": 1,
     "maximumRankLimit": 4,
     "participantsPerQualificationSpotLimit": 3
