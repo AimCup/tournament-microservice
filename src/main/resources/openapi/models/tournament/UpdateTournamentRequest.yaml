@@ -1,0 +1,22 @@
+UpdateTournamentRequest:
+  type: object
+  required: true
+  properties:
+    teamSize:
+      type: integer
+      minimum: 1
+      maximum: 8
+    maxTeamSize:
+      type: integer
+    minimumRankLimit:
+      type: integer
+    maximumRankLimit:
+      type: integer
+    participantsPerQualificationSpotLimit:
+      type: integer
+      minimum: 1
+      maximum: 16
+    rules:
+      type: string
+    prizes:
+      type: string

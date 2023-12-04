@@ -10,6 +10,33 @@ get:
         application/json:
           schema:
             $ref: '../../models/tournament/TournamentResponseDto.yaml#/TournamentResponseDtoList'
+patch:
+  tags:
+    - Tournaments
+  summary: Updates tournament data by id
+  operationId: update-tournament
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/tournament/UpdateTournamentRequest.yaml#/UpdateTournamentRequest'
+  responses:
+    '201':
+      description: CREATED
+      content:
+        application/json:
+          schema:
+            type: string
+            format: uuid
+            description: Tournament UUID
 post:
   tags:
     - Tournaments

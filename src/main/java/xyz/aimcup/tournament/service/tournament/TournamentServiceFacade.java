@@ -9,11 +9,9 @@ import org.springframework.beans.NotReadablePropertyException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
-import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
 import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 import xyz.aimcup.tournament.data.entity.tournament.TournamentType;
 import xyz.aimcup.tournament.data.repository.tournament.TournamentRepository;
-import xyz.aimcup.tournament.service.qualifications.QualificationServiceFacade;
 
 @Component
 public class TournamentServiceFacade implements TournamentBaseService,
@@ -21,13 +19,10 @@ public class TournamentServiceFacade implements TournamentBaseService,
 
     private final Map<TournamentType, SpecificTournamentService> tournamentServices;
     private final TournamentRepository tournamentRepository;
-    private final QualificationServiceFacade qualificationServiceFacade;
 
     public TournamentServiceFacade(List<SpecificTournamentService> specificTournamentServices,
-        TournamentRepository tournamentRepository,
-        QualificationServiceFacade qualificationServiceFacade) {
+        TournamentRepository tournamentRepository) {
         this.tournamentRepository = tournamentRepository;
-        this.qualificationServiceFacade = qualificationServiceFacade;
         this.tournamentServices = specificTournamentServices.stream().collect(
             Collectors.toMap(
                 SpecificTournamentService::getTournamentType,
@@ -43,7 +38,6 @@ public class TournamentServiceFacade implements TournamentBaseService,
             createTournamentRequest.getTournamentType().getValue());
         var createdTournament = getTournamentService(tournamentType)
             .createTournament(createTournamentRequest);
-        prepareQualificationsFor(createdTournament);
         preparePhasesFor(createdTournament);
         return tournamentRepository.save(createdTournament);
     }
@@ -65,13 +59,6 @@ public class TournamentServiceFacade implements TournamentBaseService,
                 "Tournament type is not supported");
         }
         return specificTournamentService;
-    }
-
-    private void prepareQualificationsFor(Tournament tournament) {
-        QualificationType qualificationType = tournament.getQualificationType();
-
-        qualificationServiceFacade.getQualificationService(qualificationType)
-            .createQualificationsFor(tournament);
     }
 
     private void preparePhasesFor(Tournament tournament) {

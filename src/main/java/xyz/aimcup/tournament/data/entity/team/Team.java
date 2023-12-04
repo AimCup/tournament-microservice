@@ -45,12 +45,13 @@ public class Team {
     private String logoUrl;
 
     @Column(name = "seed")
-    private String seed;
+    private Integer seed;
 
     @Column(name = "average_performance_points", nullable = false)
     private BigDecimal averagePerformancePoints;
 
-    @OneToOne(mappedBy = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "captain", referencedColumnName = "id")
     private Participant captain;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -20,6 +20,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.DynamicUpdate;
 import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.phase.QualificationPhase;
 import xyz.aimcup.tournament.data.entity.phase.RegistrationPhase;
@@ -30,6 +31,7 @@ import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicUpdate
 @SuperBuilder
 @DiscriminatorColumn(name = "tournament_type")
 public abstract class Tournament {

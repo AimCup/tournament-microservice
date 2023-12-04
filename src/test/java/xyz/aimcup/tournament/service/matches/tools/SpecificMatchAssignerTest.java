@@ -84,7 +84,7 @@ class SpecificMatchAssignerTest {
             .build();
 
         //when and then
-        given(participantRepository.findAllByIdInAndTournaments_Id(participantsIds, tournamentId))
+        given(participantRepository.findAllByIdInAndTournament_Id(participantsIds, tournamentId))
             .willReturn(Set.of(participant1, participant2));
 
         assertThatThrownBy(() -> specificMatchAssigner.assignParticipantsToMatch(match, participantsIds))

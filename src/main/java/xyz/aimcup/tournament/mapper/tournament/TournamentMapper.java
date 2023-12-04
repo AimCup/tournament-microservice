@@ -2,9 +2,11 @@ package xyz.aimcup.tournament.mapper.tournament;
 
 import java.util.List;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
 import xyz.aimcup.generated.model.TournamentResponseDto;
+import xyz.aimcup.generated.model.UpdateTournamentRequest;
 import xyz.aimcup.tournament.data.entity.tournament.InternationalTournament;
 import xyz.aimcup.tournament.data.entity.tournament.ParticipantBasedTournament;
 import xyz.aimcup.tournament.data.entity.tournament.TeamBasedTournament;
@@ -24,4 +26,5 @@ public interface TournamentMapper {
         CreateTournamentRequest createTournamentRequest);
 
     TeamBasedTournament toTeamBasedTournamentFrom(CreateTournamentRequest createTournamentRequest);
+    void updateTournament(@MappingTarget Tournament tournament,UpdateTournamentRequest updateTournamentRequest);
 }

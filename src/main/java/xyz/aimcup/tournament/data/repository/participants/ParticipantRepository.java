@@ -9,6 +9,6 @@ import xyz.aimcup.tournament.data.entity.participant.Participant;
 @Repository
 public interface ParticipantRepository extends JpaRepository<Participant, UUID> {
 
-    Set<Participant> findAllByIdInAndTournaments_Id(Set<UUID> participantIds, UUID tournamentId);
+    Set<Participant> findAllByIdInAndTournament_Id(Set<UUID> participantIds, UUID tournamentId);
 
 }
