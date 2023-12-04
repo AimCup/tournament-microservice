@@ -3,6 +3,7 @@ package xyz.aimcup.tournament.mapper.tournament_roles;
 import org.apache.commons.lang3.EnumUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 import xyz.aimcup.generated.model.CreateTournamentRoleRequestDto;
 import xyz.aimcup.generated.model.TournamentRoleResponseDto;
@@ -30,6 +31,7 @@ public interface TournamentRolesMapper {
 
     TournamentRole mapTournamentRoleFromCreateRequestDto(CreateTournamentRoleRequestDto createTournamentRoleRequestDto);
 
+    @Named("mapTournamentRoleToResponseDto")
     TournamentRoleResponseDto mapTournamentRoleToResponseDto(TournamentRole tournamentRole);
 
     void updateTournamentRoleFromCreateRequestDto(@MappingTarget TournamentRole tournamentRole1, TournamentRole tournamentRole2);
