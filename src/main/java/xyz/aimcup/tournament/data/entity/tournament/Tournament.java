@@ -28,6 +28,7 @@ import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.phase.QualificationPhase;
 import xyz.aimcup.tournament.data.entity.phase.RegistrationPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
+import xyz.aimcup.tournament.data.entity.tournament_role.TournamentRole;
 
 @Entity
 @Getter
@@ -83,4 +84,6 @@ public abstract class Tournament {
         inverseJoinColumns = @JoinColumn(name = "participant_id"))
     private Set<Participant> participants;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
+    private Set<TournamentRole> tournamentRoles;
 }

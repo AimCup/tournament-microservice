@@ -1,0 +1,22 @@
+get:
+  tags:
+    - staff-members
+  summary: Returns staff members in tournament
+  operationId: get-staff-members
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../models/staff/staff-member-response.yaml#/StaffMemberResponseDto'
