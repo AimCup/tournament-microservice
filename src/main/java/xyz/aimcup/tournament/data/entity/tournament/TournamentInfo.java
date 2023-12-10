@@ -2,9 +2,10 @@ package xyz.aimcup.tournament.data.entity.tournament;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -26,11 +27,10 @@ import org.hibernate.annotations.DynamicUpdate;
 public class TournamentInfo {
 
     @Id
-    @Column(name = "tournament_id")
-    private UUID tournamentId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "tournament_id")
     private Tournament tournament;
 

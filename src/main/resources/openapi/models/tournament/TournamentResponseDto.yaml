@@ -47,6 +47,10 @@ TournamentResponseDto:
     tournamentInfo:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
+          required: true
         rules:
           type: string
         prizes:

@@ -12,6 +12,8 @@ paths:
     $ref: './paths/tournaments/tournaments.yaml'
   /tournaments/{tournamentId}:
     $ref: './paths/tournaments/tournament.yaml'
+  /tournaments/{tournamentId}/info:
+    $ref: './paths/tournaments/tournament-info.yaml'
   /tourmaments/{tournamentId}/participate:
     $ref: './paths/tournaments/participate.yaml'
   /matches:

@@ -2,8 +2,6 @@ DROP TRIGGER update_tournament_info ON tournament_info;
 DROP FUNCTION update_tournament_info_updated_at_column();
 ALTER TABLE tournament_data
     DROP CONSTRAINT tournament_data_tournament_info_id_fkey;
-ALTER TABLE tournament_info
-    DROP CONSTRAINT tournament_info_pkey;
 ALTER TABLE tournament
     DROP CONSTRAINT tournament_id_fkey;
 
