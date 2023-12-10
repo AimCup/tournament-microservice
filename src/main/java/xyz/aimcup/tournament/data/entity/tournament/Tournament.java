@@ -9,10 +9,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import java.util.Set;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -59,14 +58,12 @@ public abstract class Tournament {
     private QualificationType qualificationType;
 
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    @MapsId
+    @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private TournamentData tournamentData;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    @MapsId
+    @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private TournamentInfo tournamentInfo;
 
     @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)

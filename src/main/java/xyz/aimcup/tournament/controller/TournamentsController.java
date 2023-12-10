@@ -6,10 +6,10 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.NotImplementedException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.aimcup.generated.TournamentsApi;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
+import xyz.aimcup.generated.model.SearchTournamentsDto;
 import xyz.aimcup.generated.model.TournamentResponseDto;
 import xyz.aimcup.generated.model.UpdateTournamentRequest;
 import xyz.aimcup.tournament.mapper.tournament.TournamentMapper;
@@ -24,7 +24,6 @@ public class TournamentsController implements TournamentsApi {
     private final TournamentService tournamentService;
     private final TournamentMapper tournamentMapper;
 
-    @Secured("ROLE_ADMIN")
     @Override
     public ResponseEntity<UUID> createTournament(CreateTournamentRequest createTournamentRequest) {
         var tournament = tournamentServiceFacade.createTournament(createTournamentRequest);
@@ -40,8 +39,8 @@ public class TournamentsController implements TournamentsApi {
     }
 
     @Override
-    public ResponseEntity<List<TournamentResponseDto>> getTournaments() {
-        var tournaments = tournamentService.getTournaments();
+    public ResponseEntity<List<SearchTournamentsDto>> getTournaments(Integer page, Integer size) {
+        var tournaments = tournamentService.getTournaments(page, size);
         var tournamentResponseDtos = tournamentMapper.toTournamentResponseDtoListFrom(tournaments);
         return ResponseEntity.ok(tournamentResponseDtos);
     }

@@ -1,6 +1,6 @@
 {
   "qualificationType": "GROUP_STAGES",
-  "tournamentType": "PLAYER_VS",
+  "tournamentType": "PARTICIPANT_VS",
   "tournamentData": {
     "participantsLimit": 10,
     "participantsPerBeatmapLimit": 2,

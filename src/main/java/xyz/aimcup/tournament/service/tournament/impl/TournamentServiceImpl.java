@@ -4,6 +4,9 @@ import jakarta.ws.rs.NotFoundException;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Repository;
 import xyz.aimcup.generated.model.UpdateTournamentRequest;
 import xyz.aimcup.tournament.data.entity.tournament.Tournament;
@@ -18,8 +21,10 @@ public class TournamentServiceImpl implements TournamentService {
     private final TournamentMapper tournamentMapper;
 
     @Override
-    public List<Tournament> getTournaments() {
-        return tournamentRepository.findAll();
+    public List<Tournament> getTournaments(Integer page, Integer size) {
+        final var pageToRetrieve = PageRequest.of(page, size,
+            Sort.by(Direction.DESC,"registrationPhase.startTime"));
+        return tournamentRepository.findAll(pageToRetrieve).getContent();
     }
 
     @Override

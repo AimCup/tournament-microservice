@@ -1,0 +1,54 @@
+SearchTournamentsDto:
+  type: object
+  properties:
+    id:
+      required: true
+      type: string
+      format: uuid
+    name:
+      type: string
+    abbreviation:
+      type: string
+    tournamentType:
+      type: string
+      required: true
+      enum:
+        - PARTICIPANT_VS
+        - TEAM_VS
+        - INTERNATIONAL
+    qualificationType:
+      type: string
+      required: true
+      enum:
+        - GROUP_STAGES
+        - QUALIFICATION_ROOMS
+    registrationPhase:
+      type: object
+      required: true
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          required: true
+        endTime:
+          type: string
+          format: date-time
+          required: true
+    qualificationPhase:
+      type: object
+      required: true
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          required: true
+        endTime:
+          type: string
+          format: date-time
+          required: true
+
+
+SearchTournamentsDtoList:
+  type: array
+  items:
+    $ref: '#/SearchTournamentsDto'

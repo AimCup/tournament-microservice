@@ -3,13 +3,27 @@ get:
     - Tournaments
   summary: Return tournaments
   operationId: get-tournaments
+  parameters:
+    - name: page
+      in: query
+      required: true
+      schema:
+        type: integer
+        description: Page number
+    - name: size
+      in: query
+      required: true
+      schema:
+        type: integer
+        maximum: 100
+        description: Page size
   responses:
     '200':
       description: OK
       content:
         application/json:
           schema:
-            $ref: '../../models/tournament/TournamentResponseDto.yaml#/TournamentResponseDtoList'
+            $ref: '../../models/tournament/SearchTournamentsDto.yaml#/SearchTournamentsDtoList'
 patch:
   tags:
     - Tournaments

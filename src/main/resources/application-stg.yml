@@ -45,8 +45,3 @@ spring:
             client-secret: MUSDaD5wr0p06E8rwlVXkteKagnr29lU
             scope: profile,openid,offline_access
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
-logging:
-  level:
-    org:
-      springframework:
-        security: TRACE

@@ -15,8 +15,10 @@ ALTER TABLE tournament_info
 ALTER TABLE qualification_room
     ADD COLUMN qualification_room_type VARCHAR(31) NOT NULL;
 
-ALTER TABLE tournament
-    ADD FOREIGN KEY (id) REFERENCES tournament_info (tournament_id);
+ALTER TABLE tournament_data
+    ADD FOREIGN KEY (tournament_id) REFERENCES tournament (id);
+ALTER TABLE tournament_info
+    ADD FOREIGN KEY (tournament_id) REFERENCES tournament (id);
 
 CREATE OR REPLACE FUNCTION update_tournament_info_created_at_column()
     RETURNS TRIGGER AS

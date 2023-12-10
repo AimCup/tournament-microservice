@@ -5,6 +5,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
+import xyz.aimcup.generated.model.SearchTournamentsDto;
 import xyz.aimcup.generated.model.TournamentResponseDto;
 import xyz.aimcup.generated.model.UpdateTournamentRequest;
 import xyz.aimcup.tournament.data.entity.tournament.InternationalTournament;
@@ -17,7 +18,7 @@ public interface TournamentMapper {
 
     TournamentResponseDto toTournamentResponseDtoFrom(Tournament tournament);
 
-    List<TournamentResponseDto> toTournamentResponseDtoListFrom(List<Tournament> tournaments);
+    List<SearchTournamentsDto> toTournamentResponseDtoListFrom(List<Tournament> tournaments);
 
     ParticipantBasedTournament toParticipantBasedTournamentFrom(
         CreateTournamentRequest createTournamentRequest);

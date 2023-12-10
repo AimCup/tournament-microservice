@@ -4,6 +4,8 @@ ALTER TABLE tournament_data
     DROP CONSTRAINT tournament_data_tournament_info_id_fkey;
 ALTER TABLE tournament_info
     DROP CONSTRAINT tournament_info_pkey;
+ALTER TABLE tournament
+    DROP CONSTRAINT tournament_id_fkey;
 
 ALTER TABLE match
     DROP COLUMN referees_limit;
@@ -25,5 +27,7 @@ ALTER TABLE tournament_data
     DROP COLUMN players_per_beatmap_limit;
 ALTER TABLE tournament_info
     DROP COLUMN edited_by;
+ALTER TABLE tournament_data
+    DROP COLUMN tournament_info_id;
 ALTER TABLE participant
     DROP COLUMN participant_type;

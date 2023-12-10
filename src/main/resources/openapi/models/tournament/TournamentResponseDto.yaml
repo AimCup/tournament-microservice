@@ -14,14 +14,23 @@ TournamentResponseDto:
         - PARTICIPANT_VS
         - TEAM_VS
         - INTERNATIONAL
+    qualificationType:
+      type: string
+      required: true
+      enum:
+        - GROUP_STAGES
+        - QUALIFICATION_ROOMS
+    abbreviation:
+      type: string
+    createdBy:
+      type: string
+      format: uuid
     tournamentData:
       type: object
       required: true
       properties:
         teamSize:
           type: integer
-          minimum: 1
-          maximum: 8
           required: true
         maxTeamSize:
           type: integer
@@ -34,15 +43,21 @@ TournamentResponseDto:
           required: true
         participantsPerQualificationSpotLimit:
           type: integer
-          minimum: 1
-          maximum: 16
           required: true
-    qualificationType:
-      type: string
-      required: true
-      enum:
-        - GROUP_STAGES
-        - QUALIFICATION_ROOMS
+    tournamentInfo:
+      type: object
+      properties:
+        rules:
+          type: string
+        prizes:
+          type: string
+        createdBy:
+          type: string
+          required: true
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
     registrationPhase:
       type: object
       required: true
@@ -75,13 +90,3 @@ TournamentResponseDto:
           type: string
           format: date-time
           required: true
-    abbreviation:
-      type: string
-    createdBy:
-      type: string
-      format: uuid
-
-TournamentResponseDtoList:
-  type: array
-  items:
-    $ref: '#/TournamentResponseDto'

@@ -41,9 +41,6 @@ public class QualificationRoom implements QualificationSpot {
 
     private LocalDateTime endSignupsTime;
 
-    @Column(name = "qualification_phase_id", nullable = false, insertable = false, updatable = false)
-    private UUID qualificationPhaseId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "qualification_phase_id", referencedColumnName = "id")
     private QualificationPhase qualificationPhase;

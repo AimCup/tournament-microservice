@@ -2,9 +2,9 @@ package xyz.aimcup.tournament.data.entity.tournament;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -26,10 +26,12 @@ import org.hibernate.annotations.DynamicUpdate;
 public class TournamentData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "tournament_id")
     private UUID tournamentId;
 
-    @OneToOne(mappedBy = "tournamentData")
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "tournament_id")
     private Tournament tournament;
 
     @Column(nullable = false)

@@ -1,13 +1,11 @@
 package xyz.aimcup.tournament.data.entity.phase;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.util.Set;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,10 +26,6 @@ public class QualificationPhase extends TournamentPhase {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "qualificationPhase", orphanRemoval = true)
     private Set<QualificationRoom> qualificationRooms;
-
-
-    @Column(name = "tournament_id", nullable = false, insertable = false, updatable = false)
-    private UUID tournamentId;
 
     @OneToOne
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
