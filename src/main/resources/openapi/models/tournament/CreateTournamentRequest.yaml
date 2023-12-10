@@ -62,9 +62,12 @@ CreateTournamentRequest:
           format: date-time
           required: true
     name:
+      required: true
       type: string
       minLength: 3
+      maxLength: 30
     abbreviation:
+      required: true
       type: string
       minLength: 2
       maxLength: 4

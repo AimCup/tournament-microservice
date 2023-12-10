@@ -14,6 +14,9 @@ ALTER TABLE tournament
     ADD COLUMN tournament_info_id UUID;
 ALTER TABLE qualification_room
     ADD COLUMN qualification_room_type VARCHAR(31) NOT NULL;
+ALTER TABLE tournament
+    ALTER COLUMN name TYPE VARCHAR(30);
+
 
 ALTER TABLE tournament_data
     ADD FOREIGN KEY (tournament_id) REFERENCES tournament (id);
@@ -24,8 +27,9 @@ CREATE OR REPLACE FUNCTION update_tournament_info()
     RETURNS TRIGGER AS
 $$
 DECLARE
-    old_version INT := (SELECT max(tournament_info.version) FROM tournament_info
-        where tournament_info.tournament_id = NEW.tournament_id);
+    old_version INT := (SELECT max(tournament_info.version)
+                        FROM tournament_info
+                        where tournament_info.tournament_id = NEW.tournament_id);
 BEGIN
     NEW.created_at = now();
     IF (old_version is null) THEN
