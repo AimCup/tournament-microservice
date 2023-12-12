@@ -2,12 +2,14 @@ package xyz.aimcup.tournament.mapper.tournament;
 
 import java.util.List;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
 import xyz.aimcup.generated.model.SearchTournamentsDto;
 import xyz.aimcup.generated.model.TournamentResponseDto;
-import xyz.aimcup.generated.model.UpdateTournamentRequest;
+import xyz.aimcup.generated.model.UpdateTournamentDataRequest;
 import xyz.aimcup.tournament.data.entity.tournament.InternationalTournament;
 import xyz.aimcup.tournament.data.entity.tournament.ParticipantBasedTournament;
 import xyz.aimcup.tournament.data.entity.tournament.TeamBasedTournament;
@@ -27,5 +29,18 @@ public interface TournamentMapper {
         CreateTournamentRequest createTournamentRequest);
 
     TeamBasedTournament toTeamBasedTournamentFrom(CreateTournamentRequest createTournamentRequest);
-    void updateTournament(@MappingTarget Tournament tournament,UpdateTournamentRequest updateTournamentRequest);
+
+    @Mapping(target = "tournamentData.teamSize", source = "teamSize",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "tournamentData.maxTeamSize", source = "maxTeamSize",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "tournamentData.minimumRankLimit", source = "minimumRankLimit",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "tournamentData.maximumRankLimit", source = "minimumRankLimit",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "tournamentData.participantsPerQualificationSpotLimit",
+        source = "participantsPerQualificationSpotLimit",
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateTournamentWith(@MappingTarget Tournament tournament,
+        UpdateTournamentDataRequest updateTournamentRequest);
 }

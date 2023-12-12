@@ -11,7 +11,6 @@ import xyz.aimcup.generated.TournamentsApi;
 import xyz.aimcup.generated.model.CreateTournamentRequest;
 import xyz.aimcup.generated.model.SearchTournamentsDto;
 import xyz.aimcup.generated.model.TournamentResponseDto;
-import xyz.aimcup.generated.model.UpdateTournamentRequest;
 import xyz.aimcup.tournament.mapper.tournament.TournamentMapper;
 import xyz.aimcup.tournament.service.tournament.TournamentService;
 import xyz.aimcup.tournament.service.tournament.TournamentServiceFacade;
@@ -48,12 +47,5 @@ public class TournamentsController implements TournamentsApi {
     @Override
     public ResponseEntity<UUID> participate(UUID tournamentId) {
         throw new NotImplementedException();
-    }
-
-    @Override
-    public ResponseEntity<UUID> updateTournament(UUID tournamentId,
-        UpdateTournamentRequest updateTournamentRequest) {
-        tournamentService.updateTournament(tournamentId, updateTournamentRequest);
-        return ResponseEntity.noContent().build();
     }
 }
