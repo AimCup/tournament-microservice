@@ -10,8 +10,6 @@ ALTER TABLE tournament_info
     ADD COLUMN version INT;
 ALTER TABLE tournament_info
     ADD COLUMN tournament_id UUID NOT NULL;
-ALTER TABLE tournament
-    ADD COLUMN tournament_info_id UUID;
 ALTER TABLE qualification_room
     ADD COLUMN qualification_room_type VARCHAR(31) NOT NULL;
 ALTER TABLE tournament

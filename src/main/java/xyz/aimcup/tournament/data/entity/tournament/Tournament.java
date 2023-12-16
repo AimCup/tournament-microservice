@@ -9,7 +9,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -63,8 +62,7 @@ public abstract class Tournament {
     @PrimaryKeyJoinColumn
     private TournamentData tournamentData;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tournament_info_id")
+    @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL)
     private TournamentInfo tournamentInfo;
 
     @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)

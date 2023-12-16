@@ -36,7 +36,7 @@ public interface TournamentMapper {
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "tournamentData.minimumRankLimit", source = "minimumRankLimit",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "tournamentData.maximumRankLimit", source = "minimumRankLimit",
+    @Mapping(target = "tournamentData.maximumRankLimit", source = "maximumRankLimit",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "tournamentData.participantsPerQualificationSpotLimit",
         source = "participantsPerQualificationSpotLimit",
