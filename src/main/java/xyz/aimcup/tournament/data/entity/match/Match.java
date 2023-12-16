@@ -32,7 +32,7 @@ import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
 @NoArgsConstructor
 @SuperBuilder
 @DiscriminatorColumn(name = "match_type")
-public class Match {
+public abstract class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

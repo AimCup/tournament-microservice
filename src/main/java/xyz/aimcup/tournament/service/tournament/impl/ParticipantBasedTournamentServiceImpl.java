@@ -25,7 +25,7 @@ public class ParticipantBasedTournamentServiceImpl implements ParticipantBasedTo
     public Tournament createTournament(CreateTournamentRequest createTournamentRequest) {
         ParticipantBasedTournament tournament =
             tournamentMapper.toParticipantBasedTournamentFrom(createTournamentRequest);
-        tournament.setCreatedBy(UUID.randomUUID());
+        tournament.setCreatedBy(UUID.randomUUID());  //TODO: Add real user (task: AC-59)
         return tournament;
     }
 }

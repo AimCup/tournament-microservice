@@ -2,6 +2,7 @@ package xyz.aimcup.tournament.service.matches.impl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -16,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import xyz.aimcup.tournament.controller.builder.request.CreateMatchRequestTestCaseBuilder;
 import xyz.aimcup.tournament.data.entity.match.Match;
 import xyz.aimcup.tournament.data.entity.match.MatchType;
-import xyz.aimcup.tournament.data.entity.match.builder.MatchTestCaseBuilder;
+import xyz.aimcup.tournament.data.entity.match.builder.ParticipantBasedMatchTestCaseBuilder;
 import xyz.aimcup.tournament.data.repository.match.MatchRepository;
 import xyz.aimcup.tournament.mapper.match.MatchMapperImpl;
 import xyz.aimcup.tournament.service.matches.tools.SpecificMatchAssigner;
@@ -44,7 +45,7 @@ class ParticipantBasedMatchServiceTest {
         final var qualificationGroupId = UUID.fromString("c9f9cd37-9033-4f03-9a7a-dc85309c0722");
         final var tournamentId = UUID.fromString("1b2976ab-ac68-4b12-bdbe-5e9c2cb43b05");
 
-        final var match = MatchTestCaseBuilder.buildMatchWith(tournamentId, MatchType.PARTICIPANT_VS);
+        final var match = ParticipantBasedMatchTestCaseBuilder.buildMatchWith(tournamentId);
         match.setQualificationGroupId(qualificationGroupId);
 
         final var createMatchRequest = CreateMatchRequestTestCaseBuilder

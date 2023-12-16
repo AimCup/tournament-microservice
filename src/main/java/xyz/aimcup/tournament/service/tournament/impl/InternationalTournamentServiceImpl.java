@@ -25,7 +25,7 @@ public class InternationalTournamentServiceImpl implements InternationalTourname
     public Tournament createTournament(CreateTournamentRequest createTournamentRequest) {
         InternationalTournament tournament =
             tournamentMapper.toInternationalTournamentFrom(createTournamentRequest);
-        tournament.setCreatedBy(UUID.randomUUID());
+        tournament.setCreatedBy(UUID.randomUUID());  //TODO: Add real user (task: AC-59)
         return tournament;
     }
 

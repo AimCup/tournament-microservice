@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import xyz.aimcup.tournament.data.entity.match.Match;
+import xyz.aimcup.tournament.data.entity.match.ParticipantBasedMatch;
 import xyz.aimcup.tournament.data.entity.participant.Participant;
 import xyz.aimcup.tournament.data.repository.participants.ParticipantRepository;
 import xyz.aimcup.tournament.data.repository.phases.BracketsPhaseRepository;
@@ -41,7 +42,7 @@ class SpecificMatchAssignerTest {
     void shouldThrowQualificationGroupNotFoundExceptionWhenCannotFindQualificationGroupMatchingForProvidedMatch() {
         //given
         final var qualificationGroupId = UUID.fromString("7b47e4be-c600-4453-a5f3-0cb2a34744d5");
-        final var match = Match.builder()
+        final var match = ParticipantBasedMatch.builder()
             .qualificationGroupId(qualificationGroupId)
             .build();
 
@@ -57,7 +58,7 @@ class SpecificMatchAssignerTest {
     void shouldThrowPhaseNotFoundExceptionWhenCannotFindBracketsPhaseForProvidedMatch() {
         //given
         final var bracketsPhaseId = UUID.fromString("c9c300a8-aee1-4cf7-a194-773314a84495");
-        final var match = Match.builder()
+        final var match = ParticipantBasedMatch.builder()
             .bracketsPhaseId(bracketsPhaseId)
             .build();
 
@@ -79,7 +80,7 @@ class SpecificMatchAssignerTest {
         final var participant1 = Participant.builder().id(participantId1).build();
         final var participant2 = Participant.builder().id(participantId2).build();
         final var participantsIds = Set.of(participantId1, participantId2, participantId3);
-        final var match = Match.builder()
+        final var match = ParticipantBasedMatch.builder()
             .tournamentId(tournamentId)
             .build();
 
