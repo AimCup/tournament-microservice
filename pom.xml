@@ -153,13 +153,27 @@
                 <configuration>
                     <excludes>
                         <exclude>xyz/aimcup/generated/**/*</exclude>
-                        <exclude>xyz/aimcup/*/data/**/*</exclude>
-                        <exclude>xyz/aimcup/*/mapper/**/*</exclude>
+                        <exclude>xyz/aimcup/**/configuration/**/*</exclude>
+                        <exclude>xyz/aimcup/**/data/**/*</exclude>
+                        <exclude>xyz/aimcup/**/mapper/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>before-integration-test-execution</id>
+                        <id>prepare-jacoco-agent-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-code-coverage-report-mvn-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>prepare-jacoco-agent-verify</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>prepare-agent</goal>
@@ -169,7 +183,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>after-integration-test-execution</id>
+                        <id>generate-code-coverage-report-mvn-verify</id>
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>report</goal>
