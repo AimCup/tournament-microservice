@@ -1,0 +1,2 @@
+# tournament-microservice
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/75c3abda0ca2441b9c2c1e08a5c21c01)](https://app.codacy.com/gh/AimCup/tournament-microservice?utm_source=github.com&utm_medium=referral&utm_content=AimCup/tournament-microservice&utm_campaign=Badge_Grade)
