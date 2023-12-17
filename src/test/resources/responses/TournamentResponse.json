@@ -1,0 +1,26 @@
+{
+  "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+  "name": "tournamentName",
+  "tournamentType": "PARTICIPANT_VS",
+  "qualificationType": "GROUP_STAGES",
+  "abbreviation": "ABA",
+  "createdBy": "adaedefb-9dbe-4a25-ad7d-3d3ecaa0f5ce",
+  "tournamentData": {
+    "teamSize": 2,
+    "maxTeamSize": 10,
+    "minimumRankLimit": 1,
+    "maximumRankLimit": 4,
+    "participantsPerQualificationSpotLimit": 3
+  },
+  "tournamentInfo": null,
+  "registrationPhase": {
+    "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+    "startTime": "2023-11-22T17:30:36",
+    "endTime": "2023-09-22T17:30:36"
+  },
+  "qualificationPhase": {
+    "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+    "startTime": "2023-09-22T17:30:36",
+    "endTime": "2023-09-22T17:30:36"
+  }
+}

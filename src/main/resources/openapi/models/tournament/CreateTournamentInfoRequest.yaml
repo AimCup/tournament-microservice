@@ -1,0 +1,7 @@
+CreateTournamentInfoRequest:
+  type: object
+  properties:
+    rules:
+      type: string
+    prizes:
+      type: string

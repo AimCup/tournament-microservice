@@ -6,23 +6,25 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.test.context.ActiveProfiles;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+@ActiveProfiles("test")
+public class SecurityTestConfiguration {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .oauth2Client(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults());
+            .sessionManagement(Customizer.withDefaults());
         httpSecurity
-                .sessionManagement(Customizer.withDefaults());
-        httpSecurity
-                .authorizeHttpRequests(Customizer.withDefaults())
-                .authorizeHttpRequests(authorize -> {
-                    authorize.anyRequest().permitAll();
-                });
+            .authorizeHttpRequests(Customizer.withDefaults())
+            .authorizeHttpRequests(authorize -> {
+                authorize
+                    .requestMatchers("/keycloak-test", "/tournament/keycloak-test")
+                    .fullyAuthenticated()
+                    .anyRequest().permitAll();
+            });
         return httpSecurity.build();
     }
 }

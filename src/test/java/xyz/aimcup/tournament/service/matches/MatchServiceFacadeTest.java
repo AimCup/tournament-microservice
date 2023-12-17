@@ -29,7 +29,7 @@ class MatchServiceFacadeTest {
     @Test
     void shouldThrowMatchServiceNotFoundExceptionWhenCannotFindProperServiceImplForMatchTypeEnum() {
         //given
-        final MatchTypeEnum matchType = MatchTypeEnum.PLAYER_VS;
+        final MatchTypeEnum matchType = MatchTypeEnum.PARTICIPANT_VS;
         final var  createMatchRequet = CreateMatchRequest.builder()
             .matchType(matchType)
             .build();

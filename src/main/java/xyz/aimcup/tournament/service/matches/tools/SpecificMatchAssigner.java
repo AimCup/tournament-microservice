@@ -49,7 +49,7 @@ public class SpecificMatchAssigner {
     public void assignParticipantsToMatch(Match match, Set<UUID> participantsIds) {
         final var numberOfParticipantsToFind = participantsIds.size();
         final var participantsFound = participantRepository
-            .findAllByIdInAndTournaments_Id(participantsIds, match.getTournamentId());
+            .findAllByIdInAndTournament_Id(participantsIds, match.getTournamentId());
         if (participantsFound.size() != numberOfParticipantsToFind) {
             throw new ParticipantNotAssignedException(
                 "TOURNAMENT: %s".formatted(match.getTournamentId()),

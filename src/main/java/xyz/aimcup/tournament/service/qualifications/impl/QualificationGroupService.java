@@ -12,8 +12,7 @@ public class QualificationGroupService implements QualificationService {
 
     @Override
     public void createQualificationsFor(Tournament tournament) {
-        final var numberOfSpotsToCreate = tournament.getTournamentData()
-            .calculateNumberOfQualificationSpots();
+        final var numberOfSpotsToCreate = tournament.calculateNumberOfQualificationSpots();
         final var participantsPerGroup = tournament.getTournamentData()
             .getParticipantsPerQualificationSpotLimit();
         var qualificationGroups = new HashSet<QualificationGroup>();

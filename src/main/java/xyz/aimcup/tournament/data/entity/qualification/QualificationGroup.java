@@ -35,8 +35,6 @@ public class QualificationGroup implements QualificationSpot {
     @Max(16)
     private Integer participantsLimit;
 
-    @Column(name = "qualification_phase_id", nullable = false, insertable = false, updatable = false)
-    private UUID qualificationPhaseId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "qualification_phase_id", referencedColumnName = "id")
     private QualificationPhase qualificationPhase;

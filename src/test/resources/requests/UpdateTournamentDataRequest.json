@@ -1,0 +1,7 @@
+{
+  "teamSize": 3,
+  "maxTeamSize": 5,
+  "minimumRankLimit": 2,
+  "maximumRankLimit": 3,
+  "participantsPerQualificationSpotLimit": 2
+}

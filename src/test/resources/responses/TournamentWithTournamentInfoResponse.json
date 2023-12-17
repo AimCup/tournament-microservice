@@ -1,0 +1,32 @@
+{
+  "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+  "name": "tournamentName",
+  "tournamentType": "PARTICIPANT_VS",
+  "qualificationType": "GROUP_STAGES",
+  "abbreviation": "ABA",
+  "createdBy": "adaedefb-9dbe-4a25-ad7d-3d3ecaa0f5ce",
+  "tournamentData": {
+    "teamSize": 2,
+    "maxTeamSize": 10,
+    "minimumRankLimit": 1,
+    "maximumRankLimit": 4,
+    "participantsPerQualificationSpotLimit": 3
+  },
+  "tournamentInfo": {
+    "createdAt": "2023-12-16T10:34:07.839998",
+    "createdBy": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+    "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+    "rules": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat accumsan libero, a pulvinar arcu maximus eleifend. Sed at eros vitae nibh semper lacinia at in quam. Morbi dignissim ante sed purus efficitur fermentum. Ut et nibh diam. Aliquam in ante non urna aliquet blandit nec sit amet nisi. Donec suscipit diam ac dignissim venenatis. Vivamus sed interdum odio, ac sollicitudin ipsum. In purus enim, fermentum non tempus eu, rhoncus condimentum odio. Maecenas ut consectetur neque, eu elementum ipsum. Etiam turpis tortor, maximus consectetur pretium nec, ultrices interdum urna. Donec euismod nulla commodo urna fringilla tempor. Aliquam erat volutpat. Vestibulum molestie eros et sem tristique molestie.Nunc eleifend ante justo, a porta massa fringilla eget. Duis congue magna et vehicula tristique. Etiam ultricies nulla eu suscipit aliquam. Sed ac mi volutpat, porta elit non, scelerisque lectus. Vivamus a hendrerit mi. Cras eleifend faucibus nibh at mattis. Duis a gravida libero.",
+    "prizes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat accumsan libero, a pulvinar arcu maximus eleifend. Sed at eros vitae nibh semper lacinia at in quam. Morbi dignissim ante sed purus efficitur fermentum. Ut et nibh diam. Aliquam in ante non urna aliquet blandit nec sit amet nisi. Donec suscipit diam ac dignissim venenatis. Vivamus sed interdum odio, ac sollicitudin ipsum. In purus enim, fermentum non tempus eu, rhoncus condimentum odio. Maecenas ut consectetur neque, eu elementum ipsum. Etiam turpis tortor, maximus consectetur pretium nec, ultrices interdum urna. Donec euismod nulla commodo urna fringilla tempor. Aliquam erat volutpat. Vestibulum molestie eros et sem tristique molestie.Nunc eleifend ante justo, a porta massa fringilla eget. Duis congue magna et vehicula tristique. Etiam ultricies nulla eu suscipit aliquam. Sed ac mi volutpat, porta elit non, scelerisque lectus. Vivamus a hendrerit mi. Cras eleifend faucibus nibh at mattis. Duis a gravida libero."
+  },
+  "registrationPhase": {
+    "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+    "startTime": "2023-11-22T17:30:36",
+    "endTime": "2023-09-22T17:30:36"
+  },
+  "qualificationPhase": {
+    "id": "ac1d06cb-d8bb-4280-8d76-0096dcf9ae77",
+    "startTime": "2023-09-22T17:30:36",
+    "endTime": "2023-09-22T17:30:36"
+  }
+}

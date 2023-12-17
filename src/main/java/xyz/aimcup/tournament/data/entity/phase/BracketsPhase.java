@@ -8,7 +8,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.Set;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,8 +22,6 @@ import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 @SuperBuilder
 public class BracketsPhase extends TournamentPhase {
 
-    @Column(name = "tournament_id", nullable = false, insertable = false, updatable = false)
-    private UUID tournamentId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;

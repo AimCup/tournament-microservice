@@ -1,20 +1,17 @@
 {
   "qualificationType": "GROUP_STAGES",
-  "tournamentType": "PLAYER_VS",
+  "tournamentType": "PARTICIPANT_VS",
   "tournamentData": {
-    "refereesLimit": 1,
-    "commentatorsLimit": 2,
-    "streamersLimit": 3,
-    "participantsLimit": 10,
-    "playersPerBeatmapLimit": 2,
+    "teamSize": 2,
+    "maxTeamSize": 10,
     "minimumRankLimit": 1,
     "maximumRankLimit": 4,
     "participantsPerQualificationSpotLimit": 3
   },
   "name": "tournamentName",
-  "abbreviation": "abbreviation",
+  "abbreviation": "ABA",
   "registrationPhase": {
-    "startTime": "2023-09-22T17:30:36",
+    "startTime": "2023-11-22T17:30:36",
     "endTime": "2023-09-22T17:30:36"
   },
   "qualificationPhase": {

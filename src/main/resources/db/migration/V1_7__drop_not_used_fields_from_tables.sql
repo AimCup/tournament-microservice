@@ -1,0 +1,31 @@
+DROP TRIGGER update_tournament_info ON tournament_info;
+DROP FUNCTION update_tournament_info_updated_at_column();
+ALTER TABLE tournament_data
+    DROP CONSTRAINT tournament_data_tournament_info_id_fkey;
+ALTER TABLE tournament
+    DROP CONSTRAINT tournament_id_fkey;
+
+ALTER TABLE match
+    DROP COLUMN referees_limit;
+ALTER TABLE match
+    DROP COLUMN commentators_limit;
+ALTER TABLE match
+    DROP COLUMN streamers_limit;
+ALTER TABLE qualification_room
+    DROP COLUMN referees_limit;
+ALTER TABLE tournament_data
+    DROP COLUMN referees_limit;
+ALTER TABLE tournament_data
+    DROP COLUMN commentators_limit;
+ALTER TABLE tournament_data
+    DROP COLUMN streamers_limit;
+ALTER TABLE tournament_data
+    DROP COLUMN participants_limit;
+ALTER TABLE tournament_data
+    DROP COLUMN players_per_beatmap_limit;
+ALTER TABLE tournament_info
+    DROP COLUMN edited_by;
+ALTER TABLE tournament_data
+    DROP COLUMN tournament_info_id;
+ALTER TABLE participant
+    DROP COLUMN participant_type;
