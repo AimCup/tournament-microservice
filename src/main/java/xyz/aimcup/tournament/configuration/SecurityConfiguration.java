@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                     .fullyAuthenticated()
                     .anyRequest().permitAll();
             });
+        httpSecurity.oauth2ResourceServer(auth -> auth.jwt(Customizer.withDefaults()));
         return httpSecurity.build();
     }
 }
