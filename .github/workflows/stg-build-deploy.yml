@@ -29,8 +29,8 @@ jobs:
           DB_STG_USER: ${{ secrets.DB_STG_USER }}
           DB_STG_PASSWORD: ${{ secrets.DB_STG_PASSWORD }}
           EUREKA_STG: ${{ secrets.EUREKA_STG }}
-          STG_OSU_API_NAME_ISSUER_ID: ${{ secrets.STG_OSU_API_NAME_ISSUER_ID }}
-          STG_OSU_API_NAME_ID: ${{ secrets.STG_OSU_API_NAME_ID }}
-          STG_OSU_API_CLIENT_ID: ${{ secrets.STG_OSU_API_CLIENT_ID }}
-          STG_OSU_API_CLIENT_SECRET: ${{ secrets.STG_OSU_API_CLIENT_SECRET }}
-          STG_OSU_API_JWK_SET_URI: ${{ secrets.STG_OSU_API_JWK_SET_URI }}
+          STG_KEYCLOAK_NAME_ISSUER: ${{ secrets.STG_KEYCLOAK_NAME_ISSUER }}
+          STG_KEYCLOAK_CLIENT_NAME: ${{ secrets.STG_KEYCLOAK_CLIENT_NAME }}
+          STG_KEYCLOAK_CLIENT_ID: ${{ secrets.STG_KEYCLOAK_CLIENT_ID }}
+          STG_KEYCLOAK_CLIENT_SECRET: ${{ secrets.STG_KEYCLOAK_CLIENT_SECRET }}
+          STG_KEYCLOAK_JWK_SET_URI: ${{ secrets.STG_KEYCLOAK_JWK_SET_URI }}

@@ -36,18 +36,18 @@ spring:
       client:
         provider:
           aimcup:
-            issuer-uri: ${PRD_OSU_API_NAME_ISSUER_ID}
+            issuer-uri: ${PRD_KEYCLOAK_ISSUER_ID}
         registration:
           aimcup:
             provider: aimcup
-            client-name: ${PRD_OSU_API_NAME_ID}
-            client-id: ${PRD_OSU_API_CLIENT_ID}
-            client-secret: ${PRD_OSU_API_CLIENT_SECRET}
+            client-name: ${PRD_KEYCLOAK_CLIENT_NAME}
+            client-id: ${PRD_KEYCLOAK_CLIENT_ID}
+            client-secret: ${PRD_KEYCLOAK_CLIENT_SECRET}
             scope: profile,openid,offline_access
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
       resourceserver:
         jwt:
-          jwk-set-uri: ${PRD_OSU_API_JWK_SET_URI}
+          jwk-set-uri: ${PRD_KEYCLOAK_JWK_SET_URI}
 springdoc:
   api-docs:
     enabled: false

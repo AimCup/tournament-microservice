@@ -34,15 +34,15 @@ spring:
       client:
         provider:
           aimcup:
-            issuer-uri: ${OSU_API_NAME_ISSUER_ID}
+            issuer-uri: ${OSU_KEYCLOAK_ISSUER_ID}
         registration:
           aimcup:
             provider: aimcup
-            client-name: ${OSU_API_NAME_ID}
-            client-id: ${OSU_API_CLIENT_ID}
-            client-secret: ${OSU_API_CLIENT_SECRET}
+            client-name: ${OSU_KEYCLOAK_CLIENT_NAME}
+            client-id: ${OSU_KEYCLOAK_CLIENT_ID}
+            client-secret: ${OSU_KEYCLOAK_CLIENT_SECRET}
             scope: profile,openid,offline_access
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
       resourceserver:
         jwt:
-          jwk-set-uri: ${OSU_API_JWK_SET_URI}
+          jwk-set-uri: ${OSU_KEYCLOAK_JWK_SET_URI}
