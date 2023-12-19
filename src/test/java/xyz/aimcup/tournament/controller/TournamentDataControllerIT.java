@@ -5,7 +5,6 @@ import static xyz.aimcup.tournament.testingtools.PatternTestTools.UUID_PATTERN;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

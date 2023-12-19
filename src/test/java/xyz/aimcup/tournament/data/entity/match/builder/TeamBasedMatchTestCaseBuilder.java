@@ -3,7 +3,6 @@ package xyz.aimcup.tournament.data.entity.match.builder;
 import java.util.UUID;
 import lombok.NoArgsConstructor;
 import xyz.aimcup.tournament.data.entity.match.MatchType;
-import xyz.aimcup.tournament.data.entity.match.ParticipantBasedMatch;
 import xyz.aimcup.tournament.data.entity.match.TeamBasedMatch;
 import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
