@@ -14,9 +14,18 @@ jobs:
         run: |
           docker-compose -f docker/prd/prd-run-database-job.yml up -d --build
         env:
-          POSTGRES_PASSWORD: ${{ secrets.TOURNAMENT_DB_PRD_PASSWORD }}"
+          DB_PRD_USER: ${{ secrets.DB_PRD_USER }}"
+          DB_PRD_PASSWORD: ${{ secrets.DB_PRD_PASSWORD }}"
       - name: Build and deploy the Docker image
         run: |
           docker-compose -f docker/prd/prd-build-deploy-job.yml up -d --build
         env:
-          POSTGRES_PASSWORD: ${{ secrets.TOURNAMENT_DB_PRD_PASSWORD }}"
+          DB_PRD_ADDRESS: ${{ secrets.DB_PRD_ADDRESS }}"
+          DB_PRD_USER: ${{ secrets.DB_PRD_USER }}"
+          DB_PRD_PASSWORD: ${{ secrets.DB_PRD_PASSWORD }}"
+          EUREKA_PRD: ${{ secrets.EUREKA_PRD }}"
+          PRD_OSU_API_NAME_ISSUER_ID: ${{ secrets.PRD_OSU_API_NAME_ISSUER_ID }}"
+          PRD_OSU_API_NAME_ID: ${{ secrets.PRD_OSU_API_NAME_ID }}"
+          PRD_OSU_API_CLIENT_ID: ${{ secrets.PRD_OSU_API_CLIENT_ID }}"
+          PRD_OSU_API_CLIENT_SECRET: ${{ secrets.PRD_OSU_API_CLIENT_SECRET }}"
+          PRD_OSU_API_JWK_SET_URI: ${{ secrets.PRD_OSU_API_JWK_SET_URI }}"

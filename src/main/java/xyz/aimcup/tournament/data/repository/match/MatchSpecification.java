@@ -11,15 +11,22 @@ import xyz.aimcup.tournament.data.entity.match.MatchType;
 @NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
 public class MatchSpecification {
 
-    public static Specification<Match> createSearchSpecification(SearchMatchRequest searchMatchRequest) {
-        Specification<Match> tournamentIdSpec = MatchSpecification.tournamentIdEquals(searchMatchRequest.getTournamentId());
-        Specification<Match> participantIdSpec = MatchSpecification.participantIdEquals(searchMatchRequest.getParticipantIds());
-        Specification<Match> bracketsPhaseIdSpec = MatchSpecification.bracketsPhaseIdEquals(searchMatchRequest.getBracketsPhaseId());
-        Specification<Match> qualificationGroupIdSpec = MatchSpecification.qualificationGroupIdEquals(searchMatchRequest.getQualificationGroupId());
+    public static Specification<Match> createSearchSpecification(
+        SearchMatchRequest searchMatchRequest) {
+        Specification<Match> tournamentIdSpec = MatchSpecification
+            .tournamentIdEquals(searchMatchRequest.getTournamentId());
+        Specification<Match> participantIdSpec = MatchSpecification
+            .participantIdEquals(searchMatchRequest.getParticipantIds());
+        Specification<Match> bracketsPhaseIdSpec = MatchSpecification
+            .bracketsPhaseIdEquals(searchMatchRequest.getBracketsPhaseId());
+        Specification<Match> qualificationGroupIdSpec = MatchSpecification
+            .qualificationGroupIdEquals(searchMatchRequest.getQualificationGroupId());
         Specification<Match> matchTypeSpec = MatchSpecification.matchTypeEquals(
-            Objects.nonNull(searchMatchRequest.getMatchType()) ? MatchType.valueOf(searchMatchRequest.getMatchType().getValue()) : null);
+            Objects.nonNull(searchMatchRequest.getMatchType()) ?
+                MatchType.valueOf(searchMatchRequest.getMatchType().getValue()) : null);
 
-        return Specification.allOf(tournamentIdSpec, participantIdSpec, bracketsPhaseIdSpec, qualificationGroupIdSpec, matchTypeSpec);
+        return Specification.allOf(tournamentIdSpec, participantIdSpec, bracketsPhaseIdSpec,
+            qualificationGroupIdSpec, matchTypeSpec);
     }
 
     public static Specification<Match> tournamentIdEquals(UUID tournamentId) {

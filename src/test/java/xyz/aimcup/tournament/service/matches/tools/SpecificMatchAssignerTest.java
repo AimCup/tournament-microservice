@@ -12,14 +12,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import xyz.aimcup.tournament.data.entity.match.Match;
 import xyz.aimcup.tournament.data.entity.match.ParticipantBasedMatch;
 import xyz.aimcup.tournament.data.entity.participant.Participant;
 import xyz.aimcup.tournament.data.repository.participants.ParticipantRepository;
 import xyz.aimcup.tournament.data.repository.phases.BracketsPhaseRepository;
 import xyz.aimcup.tournament.data.repository.qualification.QualificationGroupRepository;
 import xyz.aimcup.tournament.service.participants.exceptions.ParticipantNotAssignedException;
-import xyz.aimcup.tournament.service.participants.exceptions.ParticipantNotFoundException;
 import xyz.aimcup.tournament.service.phases.exceptions.PhaseNotFoundException;
 import xyz.aimcup.tournament.service.qualifications.exceptions.QualificationGroupNotFoundException;
 
@@ -51,7 +49,8 @@ class SpecificMatchAssignerTest {
             .thenReturn(Optional.empty());
         assertThatThrownBy(() -> specificMatchAssigner.assignQualificationGroupToMatch(match))
             .isInstanceOf(QualificationGroupNotFoundException.class)
-            .hasMessage("No Qualification group found for id: 7b47e4be-c600-4453-a5f3-0cb2a34744d5");
+            .hasMessage(
+                "No Qualification group found for id: 7b47e4be-c600-4453-a5f3-0cb2a34744d5");
     }
 
     @Test
@@ -67,7 +66,8 @@ class SpecificMatchAssignerTest {
             .thenReturn(Optional.empty());
         assertThatThrownBy(() -> specificMatchAssigner.assignBracketPhaseToMatch(match))
             .isInstanceOf(PhaseNotFoundException.class)
-            .hasMessage("No BRACKETS phase found with given id: c9c300a8-aee1-4cf7-a194-773314a84495");
+            .hasMessage(
+                "No BRACKETS phase found with given id: c9c300a8-aee1-4cf7-a194-773314a84495");
     }
 
     @Test
@@ -88,10 +88,12 @@ class SpecificMatchAssignerTest {
         given(participantRepository.findAllByIdInAndTournament_Id(participantsIds, tournamentId))
             .willReturn(Set.of(participant1, participant2));
 
-        assertThatThrownBy(() -> specificMatchAssigner.assignParticipantsToMatch(match, participantsIds))
+        assertThatThrownBy(
+            () -> specificMatchAssigner.assignParticipantsToMatch(match, participantsIds))
             .isInstanceOf(ParticipantNotAssignedException.class)
-            .hasMessage("Some participants were not found for TOURNAMENT: %s: [%s, %s, %s], found: [%s, %s]"
-                .formatted(tournamentId, participantId1, participantId2, participantId3,
-                    participantId1, participantId2));
+            .hasMessage(
+                "Some participants were not found for TOURNAMENT: %s: [%s, %s, %s], found: [%s, %s]"
+                    .formatted(tournamentId, participantId1, participantId2, participantId3,
+                        participantId1, participantId2));
     }
 }

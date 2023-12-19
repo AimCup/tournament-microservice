@@ -1,7 +1,7 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://172.18.0.1:8762/eureka
+      defaultZone: http://${EUREKA_STG}/eureka
 server:
   servlet:
     context-path: /tournament
@@ -13,9 +13,9 @@ spring:
   application:
     name: tournament-microservice
   datasource:
-    url: jdbc:postgresql://172.18.0.1:5501/tournament
-    username: tournament
-    password: ${TOURNAMENT_DB_STG_PASSWORD}
+    url: jdbc:postgresql://${DB_AKC_ADDRESS}/tournament
+    username: ${DB_STG_USER}
+    password: ${DB_STG_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 10000
@@ -36,12 +36,15 @@ spring:
       client:
         provider:
           aimcup:
-            issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
+            issuer-uri: ${STG_OSU_API_NAME_ISSUER_ID}
         registration:
           aimcup:
             provider: aimcup
-            client-name: aimcup
-            client-id: aimcup
-            client-secret: MUSDaD5wr0p06E8rwlVXkteKagnr29lU
+            client-name: ${STG_OSU_API_NAME_ID}
+            client-id: ${STG_OSU_API_CLIENT_ID}
+            client-secret: ${STG_OSU_API_CLIENT_SECRET}
             scope: profile,openid,offline_access
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${STG_OSU_API_JWK_SET_URI}

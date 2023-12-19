@@ -3,7 +3,6 @@ package xyz.aimcup.tournament.controller.mvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static xyz.aimcup.tournament.testingtools.PatternTestTools.UUID_PATTERN;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,7 +42,8 @@ public class TournamentsMockMvc {
             .replaceAll("\"", ""));
     }
 
-    public TournamentResponseDto getTournamentByIdWithoutUuids(UUID id, boolean skipUuids) throws Exception {
+    public TournamentResponseDto getTournamentByIdWithoutUuids(UUID id, boolean skipUuids)
+        throws Exception {
         var jsonResponse = mockMvc.perform(
                 get("/tournaments/{tournamentId}", id)
                     .contentType("application/json"))
