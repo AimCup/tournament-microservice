@@ -7,7 +7,9 @@ import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 
 @Repository
 public interface TournamentService {
-    List<Tournament> getTournaments();
+
+    List<Tournament> getTournaments(Integer page, Integer size);
+
     Tournament getTournamentById(UUID id);
 
 }

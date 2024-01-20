@@ -7,7 +7,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.util.UUID;
-import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -17,8 +16,8 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import xyz.aimcup.tournament.controller.builder.request.CreateMatchRequestTestCaseBuilder;
 import xyz.aimcup.tournament.data.entity.match.Match;
-import xyz.aimcup.tournament.data.entity.match.builder.MatchTestCaseBuilder;
 import xyz.aimcup.tournament.data.entity.match.MatchType;
+import xyz.aimcup.tournament.data.entity.match.builder.TeamBasedMatchTestCaseBuilder;
 import xyz.aimcup.tournament.data.repository.match.MatchRepository;
 import xyz.aimcup.tournament.mapper.match.MatchMapperImpl;
 import xyz.aimcup.tournament.service.matches.tools.SpecificMatchAssigner;
@@ -46,7 +45,7 @@ class TeamBasedMatchServiceTest {
         final var bracketsPhaseId = UUID.fromString("c9f9cd37-9033-4f03-9a7a-dc85309c0722");
         final var tournamentId = UUID.fromString("1b2976ab-ac68-4b12-bdbe-5e9c2cb43b05");
 
-        final var match = MatchTestCaseBuilder.buildMatchWith(tournamentId, MatchType.TEAM_VS);
+        final var match = TeamBasedMatchTestCaseBuilder.buildMatchWith(tournamentId);
         match.setBracketsPhaseId(bracketsPhaseId);
 
         final var createMatchRequest = CreateMatchRequestTestCaseBuilder
@@ -60,7 +59,8 @@ class TeamBasedMatchServiceTest {
         verify(specificMatchAssigner, times(1)).assignBracketPhaseToMatch(any(Match.class));
         verify(specificMatchAssigner, times(1)).assignQualificationGroupToMatch(any(Match.class));
         verify(specificMatchAssigner, times(1))
-            .assignParticipantsToMatch(any(Match.class), eq(createMatchRequest.getParticipantsIds()));
+            .assignParticipantsToMatch(any(Match.class),
+                eq(createMatchRequest.getParticipantsIds()));
         verify(matchRepository, times(1)).save(matchArgumentCaptor.capture());
 
         assertThat(matchArgumentCaptor.getValue()).usingRecursiveComparison()

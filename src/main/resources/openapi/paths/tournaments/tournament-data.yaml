@@ -1,0 +1,27 @@
+patch:
+  tags:
+    - TournamentData
+  summary: Updates tournament data by id
+  operationId: update-tournament-info
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/tournament/UpdateTournamentDataRequest.yaml#/UpdateTournamentDataRequest'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+            format: uuid
+            description: Tournament UUID

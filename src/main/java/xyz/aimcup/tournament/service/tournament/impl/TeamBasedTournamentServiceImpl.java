@@ -25,7 +25,7 @@ public class TeamBasedTournamentServiceImpl implements TeamBasedTournamentServic
     public Tournament createTournament(CreateTournamentRequest createTournamentRequest) {
         TeamBasedTournament tournament =
             tournamentMapper.toTeamBasedTournamentFrom(createTournamentRequest);
-        tournament.setCreatedBy(UUID.randomUUID());
+        tournament.setCreatedBy(UUID.randomUUID());  //TODO: Add real user (task: AC-59)
         return tournament;
     }
 }

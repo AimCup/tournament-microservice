@@ -1,0 +1,32 @@
+[
+    {
+        "id": "c654bf1d-c6b7-4b99-9d70-ae059e967298",
+        "name": "tournamentName",
+        "abbreviation": "ABA",
+        "tournamentType": "PARTICIPANT_VS",
+        "qualificationType": "GROUP_STAGES",
+        "registrationPhase": {
+            "startTime": "2023-11-22T17:30:36",
+            "endTime": "2023-09-22T17:30:36"
+        },
+        "qualificationPhase": {
+            "startTime": "2023-09-22T17:30:36",
+            "endTime": "2023-09-22T17:30:36"
+        }
+    },
+    {
+            "id": "c654bf1d-c6b7-4b99-9d70-ae059e967298",
+            "name": "tournamentName",
+            "abbreviation": "ABA",
+            "tournamentType": "PARTICIPANT_VS",
+            "qualificationType": "GROUP_STAGES",
+            "registrationPhase": {
+                "startTime": "2023-11-22T17:30:36",
+                "endTime": "2023-09-22T17:30:36"
+            },
+            "qualificationPhase": {
+                "startTime": "2023-09-22T17:30:36",
+                "endTime": "2023-09-22T17:30:36"
+            }
+        }
+]

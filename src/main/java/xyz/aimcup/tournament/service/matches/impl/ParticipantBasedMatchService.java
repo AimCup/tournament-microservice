@@ -12,7 +12,7 @@ import xyz.aimcup.tournament.service.matches.tools.SpecificMatchAssigner;
 
 @Service
 @RequiredArgsConstructor
-public class PlayerBasedMatchService implements SpecificMatchService {
+public class ParticipantBasedMatchService implements SpecificMatchService {
 
     private final MatchMapper matchMapper;
     private final MatchRepository repository;
@@ -20,7 +20,7 @@ public class PlayerBasedMatchService implements SpecificMatchService {
 
     @Override
     public Match createMatch(CreateMatchRequest createMatchRequest) {
-        final var matchToCreate = matchMapper.toPlayerBasedMatchFrom(createMatchRequest);
+        final var matchToCreate = matchMapper.toParticipantBasedMatchFrom(createMatchRequest);
         specificMatchAssigner.assignQualificationGroupToMatch(matchToCreate);
         specificMatchAssigner.assignBracketPhaseToMatch(matchToCreate);
         specificMatchAssigner.assignParticipantsToMatch(matchToCreate,
@@ -30,6 +30,6 @@ public class PlayerBasedMatchService implements SpecificMatchService {
 
     @Override
     public boolean isMatchingService(MatchType matchType) {
-        return MatchType.PLAYER_VS.equals(matchType);
+        return MatchType.PARTICIPANT_VS.equals(matchType);
     }
 }

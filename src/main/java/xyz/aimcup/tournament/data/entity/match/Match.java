@@ -32,7 +32,7 @@ import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
 @NoArgsConstructor
 @SuperBuilder
 @DiscriminatorColumn(name = "match_type")
-public class Match {
+public abstract class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -50,15 +50,6 @@ public class Match {
 
     @Column(name = "qualification_group_id", nullable = false, insertable = false, updatable = false)
     private UUID qualificationGroupId;
-
-    @Column(name = "referees_limit", nullable = false)
-    private Integer refereesLimit;
-
-    @Column(name = "commentators_limit", nullable = false)
-    private Integer commentatorsLimit;
-
-    @Column(name = "streamers_limit", nullable = false)
-    private Integer streamersLimit;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "match_participants",
