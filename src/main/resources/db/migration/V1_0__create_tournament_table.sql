@@ -1,4 +1,4 @@
-CREATE TABLE Tournament
+CREATE TABLE tournament
 (
     id              UUID PRIMARY KEY NOT NULL,
     tournament_type VARCHAR(31)      NOT NULL,

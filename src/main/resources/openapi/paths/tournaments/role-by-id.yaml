@@ -1,0 +1,84 @@
+get:
+  tags:
+    - tournament-roles
+  summary: Returns tournament role
+  operationId: get-tournament-role
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+    - name: tournamentRoleId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament role UUID
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../../models/tournament-roles/TournamentRoleResponseDto.yaml#/TournamentRoleResponseDto'
+
+delete:
+  tags:
+    - tournament-roles
+  summary: Returns tournament role
+  operationId: delete-tournament-role
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+    - name: tournamentRoleId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament role UUID
+  responses:
+    '204':
+      description: DELETED
+
+patch:
+  tags:
+    - tournament-roles
+  summary: Updates a tournament role
+  operationId: update-tournament-role
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+    - name: tournamentRoleId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament role UUID
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/tournament-roles/CreateTournamentRoleRequestDto.yaml#/CreateTournamentRoleRequestDto'
+  responses:
+    '200':
+      description: UPDATED
+      content:
+        application/json:
+          schema:
+            $ref: '../../models/tournament-roles/TournamentRoleResponseDto.yaml#/TournamentRoleResponseDto'

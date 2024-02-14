@@ -1,0 +1,34 @@
+StaffMemberResponseDto:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: Staff member UUID
+    discordId:
+      type: string
+      description: Staff member discord ID
+    roles:
+      type: array
+      items:
+        $ref: '../tournament-roles/TournamentRoleResponseDto.yaml#/TournamentRoleResponseDto'
+    permissions:
+      type: array
+      items:
+        type: string
+    refereedMatches:
+      type: array
+      items:
+        $ref: '../match/MatchResponseDto.yaml#/MatchResponseDto'
+    streamedMatches:
+      type: array
+      items:
+        $ref: '../match/MatchResponseDto.yaml#/MatchResponseDto'
+    castedMatches:
+      type: array
+      items:
+        $ref: '../match/MatchResponseDto.yaml#/MatchResponseDto'
+    qualificationRooms:
+      type: string
+      description: TODO
+      default: Not implemented yet

@@ -1,0 +1,56 @@
+get:
+  tags:
+    - staff-members
+  summary: Returns staff members in tournament
+  operationId: get-staff-members
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../models/staff/staff-member-response.yaml#/StaffMemberResponseDto'
+
+post:
+  tags:
+    - staff-members
+  summary: Creates staff member in tournament
+  operationId: create-staff-member
+  parameters:
+    - name: tournamentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Tournament UUID
+  requestBody:
+    description: Staff member data
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../models/staff/staff-member-request.yaml#/StaffMemberRequestDto'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../../models/staff/staff-member-response.yaml#/StaffMemberResponseDto'
+    '400':
+      description: Bad request
+    '404':
+      description: Tournament or osu! user not found
+    '409':
+      description: Staff member already exists

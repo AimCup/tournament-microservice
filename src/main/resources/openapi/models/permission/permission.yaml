@@ -1,0 +1,4 @@
+Permission:
+  type: string
+  enum:
+    - CREATE_TOURNAMENT

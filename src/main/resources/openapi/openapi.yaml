@@ -18,5 +18,16 @@ paths:
     $ref: './paths/tournaments/tournament-data.yaml'
   /tourmaments/{tournamentId}/participate:
     $ref: './paths/tournaments/participate.yaml'
+  /tournaments/{tournamentId}/roles:
+    $ref: './paths/tournaments/roles.yaml'
+  /tournaments/{tournamentId}/roles/{tournamentRoleId}:
+    $ref: './paths/tournaments/role-by-id.yaml'
+  /tournaments/permissions:
+    $ref: './paths/tournaments/permissions.yaml'
+  /tournaments/{tournamentId}/staff:
+    $ref: './paths/staff/staff.yaml'
+  /tournaments/{tournamentId}/staff/{staffMemberId}:
+    $ref: './paths/staff/staff-by-id.yaml'
+
   /matches:
     $ref: './paths/matches/matches.yaml'

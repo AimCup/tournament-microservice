@@ -2,8 +2,8 @@ eureka:
   client:
     enabled: false
 server:
-  servlet:
-    context-path: /tournament
+#  servlet:
+#    context-path: /tournament
   port: 8080
   error:
     include-message: always
@@ -11,7 +11,7 @@ spring:
   application:
     name: tournament-microservice
   datasource:
-    url: jdbc:postgresql://localhost:5501/tournament
+    url: jdbc:postgresql://localhost:5432/tournament
     username: testUser
     password: testPassword
     driver-class-name: org.postgresql.Driver
@@ -34,15 +34,12 @@ spring:
       client:
         provider:
           aimcup:
-            issuer-uri: ${OSU_KEYCLOAK_ISSUER_ID}
+            issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
         registration:
           aimcup:
             provider: aimcup
-            client-name: ${OSU_KEYCLOAK_CLIENT_NAME}
-            client-id: ${OSU_KEYCLOAK_CLIENT_ID}
-            client-secret: ${OSU_KEYCLOAK_CLIENT_SECRET}
+            client-name: aimcup
+            client-id: aimcup
+            client-secret: MUSDaD5wr0p06E8rwlVXkteKagnr29lU
             scope: profile,openid,offline_access
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
-      resourceserver:
-        jwt:
-          jwk-set-uri: ${OSU_KEYCLOAK_JWK_SET_URI}

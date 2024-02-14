@@ -24,6 +24,7 @@ import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.phase.QualificationPhase;
 import xyz.aimcup.tournament.data.entity.phase.RegistrationPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationType;
+import xyz.aimcup.tournament.data.entity.tournament_role.TournamentRole;
 
 @Entity
 @Getter
@@ -48,7 +49,6 @@ public abstract class Tournament {
     @Column(nullable = false)
     private UUID createdBy;
 
-
     @Column(name = "tournament_type", nullable = false, insertable = false, updatable = false)
     @Enumerated(EnumType.STRING)
     private TournamentType tournamentType;
@@ -56,7 +56,6 @@ public abstract class Tournament {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private QualificationType qualificationType;
-
 
     @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
@@ -75,6 +74,9 @@ public abstract class Tournament {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
     private Set<BracketsPhase> bracketsPhases;
 
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament", orphanRemoval = true)
+    private Set<TournamentRole> tournamentRoles;
 
     public abstract Integer calculateNumberOfQualificationSpots();
 }
