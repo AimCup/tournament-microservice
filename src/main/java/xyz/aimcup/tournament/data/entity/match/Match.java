@@ -24,6 +24,7 @@ import lombok.experimental.SuperBuilder;
 import xyz.aimcup.tournament.data.entity.participant.Participant;
 import xyz.aimcup.tournament.data.entity.phase.BracketsPhase;
 import xyz.aimcup.tournament.data.entity.qualification.QualificationGroup;
+import xyz.aimcup.tournament.data.entity.staff_member.StaffMember;
 
 @Entity
 @Getter
@@ -64,6 +65,20 @@ public abstract class Match {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "qualification_group_id", referencedColumnName = "id")
     private QualificationGroup qualificationGroup;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "referee_id", referencedColumnName = "id")
+    private StaffMember referee;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "streamer_id", referencedColumnName = "id")
+    private StaffMember streamer;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "match_commentators",
+        joinColumns = @JoinColumn(name = "match_id"),
+        inverseJoinColumns = @JoinColumn(name = "staff_member_id"))
+    private Set<StaffMember> commentators;
 
 }
 

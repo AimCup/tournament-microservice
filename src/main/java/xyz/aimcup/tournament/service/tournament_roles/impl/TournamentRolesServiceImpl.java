@@ -1,7 +1,11 @@
 package xyz.aimcup.tournament.service.tournament_roles.impl;
 
+import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import xyz.aimcup.tournament.data.entity.tournament.Tournament;
 import xyz.aimcup.tournament.data.entity.tournament_role.TournamentRole;
 import xyz.aimcup.tournament.data.repository.tournament_role.TournamentRoleRepository;
@@ -9,12 +13,10 @@ import xyz.aimcup.tournament.mapper.tournament_roles.TournamentRolesMapper;
 import xyz.aimcup.tournament.service.tournament.TournamentService;
 import xyz.aimcup.tournament.service.tournament_roles.TournamentRolesService;
 
-import java.util.List;
-import java.util.UUID;
-
 @Service
 @RequiredArgsConstructor
 public class TournamentRolesServiceImpl implements TournamentRolesService {
+
     private final TournamentRoleRepository tournamentRoleRepository;
     private final TournamentService tournamentService;
     private final TournamentRolesMapper tournamentRolesMapper;
@@ -37,9 +39,21 @@ public class TournamentRolesServiceImpl implements TournamentRolesService {
     }
 
     @Override
+    public List<TournamentRole> getTournamentRolesById(UUID tournamentId, List<UUID> tournamentRoleIds) {
+        List<TournamentRole> tournamentRolesInTournament = this.getTournamentRoles(tournamentId);
+        List<TournamentRole> tournamentRolesById = tournamentRolesInTournament.stream()
+            .filter(tournamentRole -> tournamentRoleIds.contains(tournamentRole.getId()))
+            .toList();
+        if (tournamentRolesById.size() != tournamentRoleIds.size()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not all tournament roles were found");
+        }
+        return tournamentRolesById;
+    }
+
+    @Override
     public TournamentRole getTournamentRoleById(UUID tournamentId, UUID tournamentRoleId) {
         return tournamentRoleRepository.findByIdAndTournament_Id(tournamentRoleId, tournamentId)
-                .orElseThrow(() -> new RuntimeException("Tournament role not found"));
+            .orElseThrow(() -> new RuntimeException("Tournament role not found"));
     }
 
     @Override

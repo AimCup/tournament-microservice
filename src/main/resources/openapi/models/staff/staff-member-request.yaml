@@ -1,0 +1,20 @@
+StaffMemberRequestDto:
+  type: object
+  properties:
+    osuId:
+      type: integer
+      format: int64
+      description: Staff member's osu ID
+    discordId:
+      type: string
+      description: Staff member discord ID
+    roles:
+      type: array
+      items:
+        type: string
+        format: uuid
+        description: Tournament role UUIDs
+    permissions:
+      type: array
+      items:
+        $ref: '../permission/permission.yaml#/Permission'

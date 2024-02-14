@@ -16,10 +16,19 @@ StaffMemberResponseDto:
       type: array
       items:
         type: string
-    matches:
+    refereedMatches:
+      type: array
+      items:
+        $ref: '../match/MatchResponseDto.yaml#/MatchResponseDto'
+    streamedMatches:
+      type: array
+      items:
+        $ref: '../match/MatchResponseDto.yaml#/MatchResponseDto'
+    castedMatches:
       type: array
       items:
         $ref: '../match/MatchResponseDto.yaml#/MatchResponseDto'
     qualificationRooms:
       type: string
       description: TODO
+      default: Not implemented yet
